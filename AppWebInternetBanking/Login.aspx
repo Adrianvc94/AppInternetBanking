@@ -6,9 +6,14 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Iniciar sesion</title>
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         * {
@@ -19,9 +24,9 @@
 
         /* Full-width input fields */
         input[type=text], input[type=password] {
-            width: 100%;
+            width: 85%;
             padding: 15px;
-            margin: 5px 0 22px 0;
+            margin: 15px 0 15px 0;
             display: inline-block;
             border: none;
             background: #f1f1f1;
@@ -72,15 +77,42 @@
 
 
         .normalbtn {
-            background-color: navy;
+            background-color: black;
             color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
+            padding: 12px 20px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 70%;
+            opacity: 0.9;
+            font-size: 20px;
+            display: block;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        }
+
+            .normalbtn:hover {
+                background-color: #292929;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            }
+
+        .btn_register {
+            color: black;
+            font-size: 18px;
+            margin: 10px auto 0 auto;
             border: none;
             cursor: pointer;
-            width: 100%;
-            opacity: 0.9;
+            width: 40%;
+            text-decoration: none;
+            display: block;
+            text-align: center;
         }
+
+            .btn_register:hover {
+                color: black;
+                text-decoration: underline;
+            }
 
 
 
@@ -108,26 +140,25 @@
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            background-color: #474e5d;
-            padding-top: 50px;
+            background-color: #292929;
+            /*            padding-top: 50px;*/
         }
 
 
 
         /* Modal Content/Box */
         .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-        }
+            display: flex;
+            background-color: #FFFFFF;
+            margin: 5% auto 0 auto;
+            border: 0px;
+            width: 85%;
+            height: 75%;
+            /*             width: 100%; 
+            height: 100%;*/
 
-
-
-        /* Style the horizontal ruler */
-        hr {
-            border: 1px solid #f1f1f1;
-            margin-bottom: 25px;
+            box-shadow: 0 1px 17px 1px rgb(0 0 0 / 9%);
+            /*            padding: 20px 50px;*/
         }
 
         /* The Close Button (x) */
@@ -140,12 +171,53 @@
             color: #f1f1f1;
         }
 
+        .form_container {
+            padding: 50px 50px;
+            margin: auto 0;
+            width: 60%;
+        }
 
-
-        .imgcontainer {
+        .img_container {
             text-align: center;
-            margin: 24px 0 12px 0;
-            position: relative;
+            margin: 0px auto 0px auto;
+            display: block;
+            background-image: url("/img/login.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.9;
+            width: 60%;
+        }
+
+        .img_container__title {
+            text-align: end;
+            /*            width: 60px;*/
+            padding-right: 50px;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: 500;
+            font-size: 45px;
+            font-family: 'Frank Ruhl Libre', serif;
+        }
+
+        .img_container__line {
+            height: 0.2px;
+            width: 67%;
+            background-color: white;
+            margin: 0 50px 0 auto;
+        }
+
+        .inputText_container{
+            display:flex;
+            align-items:center;
+            justify-content: space-evenly;
+        }
+
+        .inputText_container__image{
+            width: 25px;
+            height: 25px;
+            display:  inline-block;
+            margin-right: 10px;
         }
 
 
@@ -165,6 +237,29 @@
             display: table;
         }
 
+        input {
+            width: 100%;
+            height: 50px;
+            border-radius: 6px;
+            background-color: #f2f2f2;
+            border: none;
+            padding: 6px 12px;
+            font-weight: 500;
+            color: #606060;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        h1 {
+            color: black;
+        }
+
+        .button_container {
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 0;
+        }
+
 
 
         /* Change styles for cancel button and signup button on extra small screens */
@@ -177,25 +272,58 @@
 </head>
 <body>
     <div id="myModal" class="modal">
+
+
         <form class="modal-content animate" runat="server">
-            <div class="imgcontainer">
-                <img src="img/ulacit.jpg" />
+
+            <div class="img_container">
+                <!-- <img src="img/ulacit.jpg" /> -->
+                <h1 class="img_container__title">Internet Banking</h1>
+                <div class="img_container__line"></div>
             </div>
-            <div class="container">
-                <h1>Login</h1>
-                <asp:TextBox ID="txtUsername" runat="server" Placeholder="Ingrese su nombre de usuario"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfqvUsername" runat="server" ErrorMessage="El nombre de usuario es requerido"
-                    ControlToValidate="txtUsername" ForeColor="Maroon"></asp:RequiredFieldValidator>
-                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" Placeholder="Ingrese su clave"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="rfqvPassword" runat="server" ErrorMessage="El password es requerido"
-                    ControlToValidate="txtPassword" ForeColor="Maroon"></asp:RequiredFieldValidator>
-                <asp:Label ID="lblStatus" runat="server" Text="" ForeColor="Maroon"></asp:Label>
+
+            <div class="form_container">
+
+                <div class="container input_container">
+
+                    <h1>Iniciar Sesión</h1>
+
+                    <div class="inputText_container">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" class="inputText_container__image"/>
+                        <asp:TextBox ID="txtUsername" runat="server" Placeholder="Ingrese su nombre de usuario"></asp:TextBox>
+                    </div>
+                     <asp:RequiredFieldValidator ID="rfqvUsername" runat="server" ErrorMessage="El nombre de usuario es requerido"
+                            ControlToValidate="txtUsername" ForeColor="Maroon"></asp:RequiredFieldValidator>
+
+
+                    <div class="inputText_container">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1000/1000966.png" class="inputText_container__image"/>
+                          <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" Placeholder="Ingrese su clave"></asp:TextBox>
+                    </div>
+                  
+                    <asp:RequiredFieldValidator ID="rfqvPassword" runat="server" ErrorMessage="El password es requerido"
+                        ControlToValidate="txtPassword" ForeColor="Maroon"></asp:RequiredFieldValidator>
+
+                    <asp:Label ID="lblStatus" runat="server" Text="" ForeColor="Maroon"></asp:Label>
+
+                </div>
+
+                <div class="container button_container">
+
+
+
+                    <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="normalbtn" OnClick="btnAceptar_Click" />
+
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro.aspx" CssClass="btn_register">Registrarme</asp:HyperLink>
+
+                    <!-- <input type="reset" value="Limpiar" class="cancelbtn" /> -->
+
+
+                </div>
+
             </div>
-            <div class="container">
-                <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="normalbtn" OnClick="btnAceptar_Click" />
-                <input type="reset" value="Limpiar" class="cancelbtn" />
-                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Registro.aspx">Registrarme</asp:HyperLink>
-            </div>
+
+
         </form>
     </div>
 </body>
