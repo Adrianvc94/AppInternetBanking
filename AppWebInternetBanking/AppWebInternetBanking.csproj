@@ -162,6 +162,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="img\img_avatar2.png" />
     <Content Include="img\login.jpg" />
+    <Content Include="img\logo.ico" />
     <Content Include="img\ulacit.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Registro.aspx" />

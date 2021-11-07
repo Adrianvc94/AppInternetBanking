@@ -9,8 +9,8 @@
    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />    
+    <link rel="icon" type="image/x-icon" href="~/img/logo.ico"/>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
