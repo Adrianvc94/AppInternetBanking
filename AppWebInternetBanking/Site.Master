@@ -123,6 +123,9 @@
                             <li><a href="/Views/frmMoneda.aspx">Monedas</a></li>
                             <li><a href="/Views/frmMarchamo.aspx">Marchamo</a></li>
                             <li><a href="/Views/frmDepositoPlazo.aspx">Deposito a Plazo</a></li>
+                            <li><a href="/Views/frmCredito.aspx">Solicitaciones de Credito</a></li>
+                            <li><a href="/Views/frmTarjeta.aspx">Solicitaciones de Tarjeta</a></li>
+
                         </ul>
                     </li>
 

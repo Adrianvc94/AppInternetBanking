@@ -198,6 +198,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\frmCredito.aspx" />
     <Content Include="Views\frmCuenta.aspx" />
     <Content Include="Views\frmDepositoPlazo.aspx" />
     <Content Include="Views\frmMarchamo.aspx" />
@@ -207,6 +208,7 @@
     <Content Include="Views\frmReporteEstadistica.aspx" />
     <Content Include="Views\frmReporteSesion.aspx" />
     <Content Include="Views\frmServicio.aspx" />
+    <Content Include="Views\frmTarjeta.aspx" />
     <Content Include="Views\frmTransferencia.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -230,6 +232,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CreditoManager.cs" />
     <Compile Include="Controllers\CuentaManager.cs" />
     <Compile Include="Controllers\DepositoPlazoManager.cs" />
     <Compile Include="Controllers\ErrorManager.cs" />
@@ -238,6 +241,7 @@
     <Compile Include="Controllers\MonedaManager.cs" />
     <Compile Include="Controllers\ServicioManager.cs" />
     <Compile Include="Controllers\SesionManager.cs" />
+    <Compile Include="Controllers\TarjetaManager.cs" />
     <Compile Include="Controllers\UsuarioManager.cs" />
     <Compile Include="CustomErrors\frmError.aspx.cs">
       <DependentUpon>frmError.aspx</DependentUpon>
@@ -264,6 +268,7 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Correo.cs" />
+    <Compile Include="Models\Credito.cs" />
     <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\DepositoPlazo.cs" />
     <Compile Include="Models\Error.cs" />
@@ -274,6 +279,7 @@
     <Compile Include="Models\Pago.cs" />
     <Compile Include="Models\Servicio.cs" />
     <Compile Include="Models\Sesion.cs" />
+    <Compile Include="Models\Tarjeta.cs" />
     <Compile Include="Models\Transferencia.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\UsuarioPartial.cs" />
@@ -305,6 +311,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmCredito.aspx.cs">
+      <DependentUpon>frmCredito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmCredito.aspx.designer.cs">
+      <DependentUpon>frmCredito.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmCuenta.aspx.cs">
       <DependentUpon>frmCuenta.aspx</DependentUpon>
@@ -368,6 +381,13 @@
     </Compile>
     <Compile Include="Views\frmServicio.aspx.designer.cs">
       <DependentUpon>frmServicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmTarjeta.aspx.cs">
+      <DependentUpon>frmTarjeta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmTarjeta.aspx.designer.cs">
+      <DependentUpon>frmTarjeta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmTransferencia.aspx.cs">
       <DependentUpon>frmTransferencia.aspx</DependentUpon>

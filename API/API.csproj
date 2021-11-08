@@ -181,6 +181,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CreditoController.cs" />
     <Compile Include="Controllers\CuentasController.cs" />
     <Compile Include="Controllers\DepositoPlazosController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Controllers\PagosController.cs" />
     <Compile Include="Controllers\ServiciosController.cs" />
     <Compile Include="Controllers\SesionsController.cs" />
+    <Compile Include="Controllers\TarjetaController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
     <Compile Include="Controllers\TransferenciasController.cs" />
