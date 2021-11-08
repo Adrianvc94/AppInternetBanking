@@ -34,19 +34,19 @@
     <br />
     <asp:GridView ID="gvDepositoPlazo" runat="server" AutoGenerateColumns="false"
       CssClass="table table-sm text-center" HeaderStyle-CssClass="thead-dark" 
-        HeaderStyle-BackColor="#243054" HeaderStyle-ForeColor="White" 
+        HeaderStyle-BackColor="#1B1A1A" HeaderStyle-BorderStyle="None" BorderStyle="None"  HeaderStyle-ForeColor="White" 
         AlternatingRowStyle-BackColor="LightBlue" OnRowCommand="gvDepositoPlazo_RowCommand" >
         <Columns>
 
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderText="Codigo" DataField="CodPlazo" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderText="Usuario" DataField="CodUsuario" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderText="Cantidad de Plazos" DataField="CantidadPlazos" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderText="Total a pagar" DataField="TotalPagar" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderText="Moneda" DataField="CodMoneda" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Codigo" DataField="CodPlazo" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Usuario" DataField="CodUsuario" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Cantidad de Plazos" DataField="CantidadPlazos" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Total a pagar" DataField="TotalPagar" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Moneda" DataField="CodMoneda" />
 
-            <asp:ButtonField HeaderText="Modificar" CommandName="Modificar" HeaderStyle-CssClass="text-center"
+            <asp:ButtonField HeaderText="Modificar" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" CommandName="Modificar" HeaderStyle-CssClass="text-center"
                 ControlStyle-CssClass="btn btn-primary" ButtonType="Button" Text="Modificar" />
-            <asp:ButtonField HeaderText="Eliminar" CommandName="Eliminar" HeaderStyle-CssClass="text-center"
+            <asp:ButtonField HeaderText="Eliminar" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" CommandName="Eliminar" HeaderStyle-CssClass="text-center"
                 ControlStyle-CssClass="btn btn-danger" ButtonType="Button" Text="Eliminar" />
         </Columns>
     </asp:GridView>

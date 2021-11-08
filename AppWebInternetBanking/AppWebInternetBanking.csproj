@@ -160,9 +160,11 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="img\homepage.jpg" />
     <Content Include="img\img_avatar2.png" />
     <Content Include="img\login.jpg" />
     <Content Include="img\logo.ico" />
+    <Content Include="img\logo.png" />
     <Content Include="img\ulacit.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Registro.aspx" />

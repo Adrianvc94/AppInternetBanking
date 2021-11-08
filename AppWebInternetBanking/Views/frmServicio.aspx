@@ -30,18 +30,22 @@
      </script> 
     <h1>Mantenimiento de servicios</h1>
     <input id="myInput" placeholder="Buscar" class="form-control" type="text" />
+    <br />
     <asp:GridView ID="gvServicios" runat="server" AutoGenerateColumns="false"
-      CssClass="table table-sm" HeaderStyle-CssClass="thead-dark" 
-        HeaderStyle-BackColor="#243054" HeaderStyle-ForeColor="White" 
-        AlternatingRowStyle-BackColor="LightBlue" OnRowCommand="gvServicios_RowCommand" >
+      CssClass="table table-sm text-center" HeaderStyle-CssClass="thead-dark" 
+        HeaderStyle-BackColor="#1B1A1A" HeaderStyle-BorderStyle="None" BorderStyle="None" HeaderStyle-ForeColor="White" 
+        AlternatingRowStyle-BackColor="#292929" OnRowCommand="gvServicios_RowCommand" >
         <Columns>
-            <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
-            <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-            <asp:BoundField HeaderText="Estado" DataField="Estado" />
-            <asp:ButtonField HeaderText="Modificar" CommandName="Modificar" 
+
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Codigo" DataField="Codigo" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Descripcion" DataField="Descripcion" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Estado" DataField="Estado" />
+            
+            <asp:ButtonField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Modificar" CommandName="Modificar" 
                 ControlStyle-CssClass="btn btn-primary" ButtonType="Button" Text="Modificar" />
-            <asp:ButtonField HeaderText="Eliminar" CommandName="Eliminar"
+            <asp:ButtonField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Eliminar" CommandName="Eliminar"
                 ControlStyle-CssClass="btn btn-danger" ButtonType="Button" Text="Eliminar" />
+
         </Columns>
     </asp:GridView>
     <asp:LinkButton type="Button" CssClass="btn btn-success" ID="btnNuevo" runat="server" OnClick="btnNuevo_Click"

@@ -36,7 +36,7 @@
 
             /* Add a background color when the inputs get focus */
             input[type=text]:focus, input[type=password]:focus {
-                background-color: #ddd;
+                background-color: #F3F2F7;
                 outline: none;
             }
 
@@ -149,7 +149,7 @@
         /* Modal Content/Box */
         .modal-content {
             display: flex;
-            background-color: #FFFFFF;
+            background-color: #DEDAD4;
             margin: 5% auto 0 auto;
             border: 0px;
             width: 85%;
