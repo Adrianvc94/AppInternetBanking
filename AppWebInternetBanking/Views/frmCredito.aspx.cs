@@ -34,7 +34,7 @@ namespace AppWebInternetBanking.Views
         {
             try
             {
-                credito = await creditoManager.ObtenerCredito(Session["Token"].ToString());
+                credito = await creditoManager.ObtenerCreditos(Session["Token"].ToString());
                 gvCredito.DataSource = credito.ToList();
                 gvCredito.DataBind();
 
@@ -112,7 +112,7 @@ namespace AppWebInternetBanking.Views
 
         }
 
-        protected async Task btnAceptarMant_ClickAsync(object sender, EventArgs e)
+        protected async void btnAceptarMant_ClickAsync(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCodigoMant.Text) && validar()) //insertar
             {
@@ -214,7 +214,7 @@ namespace AppWebInternetBanking.Views
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
         }
 
-        protected async Task btnAceptarModal_ClickAsync(object sender, EventArgs e)
+        protected async void btnAceptarModal_ClickAsync(object sender, EventArgs e)
         {
             try
             {
