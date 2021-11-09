@@ -19,9 +19,8 @@
             $('#myModalMantenimiento').modal('hide'); //cierra ventana de mantenimiento
         }
 
-        $(document).ready(function () { //filtrar el datagridview 
-            $("#myInput").on("keyup", function () { ///sdsd
-
+        $(document).ready(function () { //filtrar el datagridview
+            $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
                 $("#MainContent_gvServicios tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
@@ -29,7 +28,7 @@
             });
         });
     </script> 
-    
+
 
     <h1>Mantenimiento de Permisos</h1>
     <input id="myInput" placeholder="Buscar" class="form-control" type="text" />

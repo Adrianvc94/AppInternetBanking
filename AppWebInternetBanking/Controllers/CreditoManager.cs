@@ -32,7 +32,7 @@ namespace AppWebInternetBanking.Controllers
             return JsonConvert.DeserializeObject<Credito>(response);
         }
 
-        public async Task<IEnumerable<Credito>> ObtenerCreditos(string token)
+        public async Task<IEnumerable<Credito>> ObtenerCredito(string token)
         {
             HttpClient httpClient = GetClient(token);
 
