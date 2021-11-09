@@ -206,12 +206,10 @@
     <Content Include="Views\frmMoneda.aspx" />
     <Content Include="Views\frmPago.aspx" />
     <Content Include="Views\frmPermiso.aspx" />
-    <Content Include="Views\frmPrestamo.aspx" />
     <Content Include="Views\frmReporteError.aspx" />
     <Content Include="Views\frmReporteEstadistica.aspx" />
     <Content Include="Views\frmReporteSesion.aspx" />
     <Content Include="Views\frmServicio.aspx" />
-    <Content Include="Views\frmSobre.aspx" />
     <Content Include="Views\frmTarjeta.aspx" />
     <Content Include="Views\frmTransferencia.aspx" />
     <Content Include="Web.config" />
@@ -245,10 +243,8 @@
     <Compile Include="Controllers\MarchamoManager.cs" />
     <Compile Include="Controllers\MonedaManager.cs" />
     <Compile Include="Controllers\PermisoManager.cs" />
-    <Compile Include="Controllers\PrestamoManager.cs" />
     <Compile Include="Controllers\ServicioManager.cs" />
     <Compile Include="Controllers\SesionManager.cs" />
-    <Compile Include="Controllers\SobreManager.cs" />
     <Compile Include="Controllers\TarjetaManager.cs" />
     <Compile Include="Controllers\UsuarioManager.cs" />
     <Compile Include="CustomErrors\frmError.aspx.cs">
@@ -287,10 +283,8 @@
     <Compile Include="Models\Moneda.cs" />
     <Compile Include="Models\Pago.cs" />
     <Compile Include="Models\Permiso.cs" />
-    <Compile Include="Models\Prestamo.cs" />
     <Compile Include="Models\Servicio.cs" />
     <Compile Include="Models\Sesion.cs" />
-    <Compile Include="Models\Sobre.cs" />
     <Compile Include="Models\Tarjeta.cs" />
     <Compile Include="Models\Transferencia.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -380,13 +374,6 @@
     <Compile Include="Views\frmPermiso.aspx.designer.cs">
       <DependentUpon>frmPermiso.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmPrestamo.aspx.cs">
-      <DependentUpon>frmPrestamo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\frmPrestamo.aspx.designer.cs">
-      <DependentUpon>frmPrestamo.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\frmReporteError.aspx.cs">
       <DependentUpon>frmReporteError.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -414,13 +401,6 @@
     </Compile>
     <Compile Include="Views\frmServicio.aspx.designer.cs">
       <DependentUpon>frmServicio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\frmSobre.aspx.cs">
-      <DependentUpon>frmSobre.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\frmSobre.aspx.designer.cs">
-      <DependentUpon>frmSobre.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmTarjeta.aspx.cs">
       <DependentUpon>frmTarjeta.aspx</DependentUpon>

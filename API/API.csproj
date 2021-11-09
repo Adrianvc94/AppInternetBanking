@@ -193,10 +193,8 @@
     <Compile Include="Controllers\MonedasController.cs" />
     <Compile Include="Controllers\PagosController.cs" />
     <Compile Include="Controllers\PermisoesController.cs" />
-    <Compile Include="Controllers\PrestamosController.cs" />
     <Compile Include="Controllers\ServiciosController.cs" />
     <Compile Include="Controllers\SesionsController.cs" />
-    <Compile Include="Controllers\SobresController.cs" />
     <Compile Include="Controllers\TarjetaController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
