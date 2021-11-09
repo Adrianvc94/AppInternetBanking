@@ -96,13 +96,13 @@ namespace AppWebInternetBanking.Views
         protected global::System.Web.UI.WebControls.Literal ltrTipoLicencia;
 
         /// <summary>
-        /// ddlTipoLicencia control.
+        /// txtTipoLicencia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoLicencia;
+        protected global::System.Web.UI.WebControls.TextBox txtTipoLicencia;
 
         /// <summary>
         /// ltrFechaE control.

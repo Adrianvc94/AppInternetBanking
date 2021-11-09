@@ -78,13 +78,13 @@ namespace AppWebInternetBanking.Views
         protected global::System.Web.UI.WebControls.Literal ltrCodUsuarioMant;
 
         /// <summary>
-        /// ddUSU_CODIGO control.
+        /// txtCodUsuarioMant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddUSU_CODIGO;
+        protected global::System.Web.UI.WebControls.TextBox txtCodUsuarioMant;
 
         /// <summary>
         /// ltrMontoPrestamoMant control.

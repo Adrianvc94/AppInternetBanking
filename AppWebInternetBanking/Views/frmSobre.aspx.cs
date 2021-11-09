@@ -15,8 +15,6 @@ namespace AppWebInternetBanking.Views
     {
         IEnumerable<Sobre> sobres = new ObservableCollection<Sobre>();
         SobreManager sobreManager = new SobreManager();
-        IEnumerable<Usuario> usuarios = new ObservableCollection<Usuario>();
-        UsuarioManager usuarioManager = new UsuarioManager();
         static string _codigo = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,12 +34,6 @@ namespace AppWebInternetBanking.Views
                 sobres = await sobreManager.ObtenerSobres(Session["Token"].ToString());
                 gvSobres.DataSource = sobres.ToList();
                 gvSobres.DataBind();
-
-                usuarios = await usuarioManager.ObtenerUsuarios(Session["Token"].ToString());
-                ddUSU_CODIGO.DataTextField = "Username";
-                ddUSU_CODIGO.DataValueField = "Codigo";
-                ddUSU_CODIGO.DataSource = usuarios.ToList();
-                ddUSU_CODIGO.DataBind();
             }
             catch (Exception)
             {
@@ -57,7 +49,7 @@ namespace AppWebInternetBanking.Views
             {
                 Sobre sobre = new Sobre()
                 {
-                    CodCuenta = Convert.ToInt32(ddUSU_CODIGO.SelectedValue.ToString()),
+                    CodCuenta = Convert.ToInt32(txtCodCuentaMant.Text),
                     Saldo = Convert.ToDecimal(txtSaldoMant.Text),
                     Descripcion = txtDescripcionMant.Text,
                     CodMoneda = Convert.ToInt32(ddlCodMoneda.SelectedValue)
@@ -87,7 +79,7 @@ namespace AppWebInternetBanking.Views
                 Sobre sobre = new Sobre()
                 {
                     CodSobre = Convert.ToInt32(txtCodSobreMant.Text),
-                    CodCuenta = Convert.ToInt32(ddUSU_CODIGO.SelectedValue.ToString()),
+                    CodCuenta = Convert.ToInt32(txtCodCuentaMant.Text),
                     Saldo = Convert.ToDecimal(txtSaldoMant.Text),
                     Descripcion = txtDescripcionMant.Text,
                     CodMoneda = Convert.ToInt32(ddlCodMoneda.SelectedValue)
@@ -169,7 +161,7 @@ namespace AppWebInternetBanking.Views
             ltrCodSobreMant.Visible = true;
             txtCodSobreMant.Visible = true;
             ltrCodCuentaMant.Visible = true;
-            //txtCodCuentaMant.Visible = true;
+            txtCodCuentaMant.Visible = true;
             ltrSaldoMant.Visible = true;
             txtSaldoMant.Visible = true;
             ltrDescripcionMant.Visible = true;
@@ -193,7 +185,7 @@ namespace AppWebInternetBanking.Views
                     ltrTituloMantenimiento.Text = "Modificar servicio";
                     btnAceptarMant.ControlStyle.CssClass = "btn btn-primary";
                     txtCodSobreMant.Text = row.Cells[0].Text.Trim();
-                    ddUSU_CODIGO.SelectedValue = row.Cells[1].Text.Trim();
+                    txtCodCuentaMant.Text = row.Cells[1].Text.Trim();
                     txtSaldoMant.Text = row.Cells[2].Text.Trim();
                     txtDescripcionMant.Text = row.Cells[3].Text.Trim();
                     btnAceptarMant.Visible = true;

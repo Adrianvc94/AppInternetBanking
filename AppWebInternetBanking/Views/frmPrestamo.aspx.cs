@@ -16,8 +16,6 @@ namespace AppWebInternetBanking.Views
     {
         IEnumerable<Prestamo> prestamos = new ObservableCollection<Prestamo>();
         PrestamoManager prestamoManager = new PrestamoManager();
-        IEnumerable<Usuario> usuarios = new ObservableCollection<Usuario>();
-        UsuarioManager usuarioManager = new UsuarioManager();
         static string _codigo = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,27 +25,6 @@ namespace AppWebInternetBanking.Views
                     Response.Redirect("~/Login.aspx");
                 else
                     InicializarControles();
-            }
-        }
-
-        private async void InicializarControles()
-        {
-            try
-            {
-                prestamos = await prestamoManager.ObtenerPrestamos(Session["Token"].ToString());
-                gvPrestamos.DataSource = prestamos.ToList();
-                gvPrestamos.DataBind();
-
-                usuarios = await usuarioManager.ObtenerUsuarios(Session["Token"].ToString());
-                ddUSU_CODIGO.DataTextField = "Username";
-                ddUSU_CODIGO.DataValueField = "Codigo";
-                ddUSU_CODIGO.DataSource = usuarios.ToList();
-                ddUSU_CODIGO.DataBind();
-            }
-            catch (Exception)
-            {
-                lblStatus.Text = "Hubo un error al cargar la lista de servicios";
-                lblStatus.Visible = true;
             }
         }
 
@@ -63,7 +40,7 @@ namespace AppWebInternetBanking.Views
                     ltrTituloMantenimiento.Text = "Modificar servicio";
                     btnAceptarMant.ControlStyle.CssClass = "btn btn-primary";
                     txtCodPrestamoMant.Text = row.Cells[0].Text.Trim();
-                    ddUSU_CODIGO.SelectedValue = row.Cells[1].Text.Trim();
+                    txtCodUsuarioMant.Text = row.Cells[1].Text.Trim();
                     txtMontoPrestamoMant.Text = row.Cells[2].Text.Trim();
                     txtFechaSolicitudMant.Text = row.Cells[3].Text.Trim();
                     txtFechaLimiteMant.Text = row.Cells[4].Text.Trim();
@@ -93,7 +70,7 @@ namespace AppWebInternetBanking.Views
             ltrCodPrestamoMant.Visible = true;
             txtCodPrestamoMant.Visible = true;
             ltrCodUsuarioMant.Visible = true;
-            ddUSU_CODIGO.Visible = true;
+            txtCodUsuarioMant.Visible = true;
             ltrMontoPrestamoMant.Visible = true;
             txtMontoPrestamoMant.Visible = true;
             ltrFechaSolicitudMant.Visible = true;
@@ -117,7 +94,7 @@ namespace AppWebInternetBanking.Views
                 Prestamo prestamo = new Prestamo()
                 {
 
-                    CodUsuario = Convert.ToInt32(ddUSU_CODIGO.SelectedValue.ToString()),
+                    CodUsuario = Convert.ToInt32(txtCodUsuarioMant.Text),
                     FechaSolicitud = Convert.ToDateTime(dateToInsert),
                     FechaLimite = Convert.ToDateTime(dateToInsert2),
                     MontoPrestamo = Convert.ToDecimal(txtMontoPrestamoMant.Text),
@@ -153,7 +130,7 @@ namespace AppWebInternetBanking.Views
                 Prestamo prestamo = new Prestamo()
                 {
                     CodPrestamo = Convert.ToInt32(txtCodPrestamoMant.Text),
-                    CodUsuario = Convert.ToInt32(ddUSU_CODIGO.SelectedValue.ToString()),
+                    CodUsuario = Convert.ToInt32(txtCodUsuarioMant.Text),
                     FechaSolicitud = Convert.ToDateTime(dateToInsert),
                     FechaLimite = Convert.ToDateTime(dateToInsert2),
                     MontoPrestamo = Convert.ToDecimal(txtMontoPrestamoMant.Text),
@@ -228,7 +205,20 @@ namespace AppWebInternetBanking.Views
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
         }
 
-
+        private async void InicializarControles()
+        {
+            try
+            {
+                prestamos = await prestamoManager.ObtenerPrestamos(Session["Token"].ToString());
+                gvPrestamos.DataSource = prestamos.ToList();
+                gvPrestamos.DataBind();
+            }
+            catch (Exception)
+            {
+                lblStatus.Text = "Hubo un error al cargar la lista de servicios";
+                lblStatus.Visible = true;
+            }
+        }
         private bool validar()
         {
             try

@@ -32,19 +32,18 @@
     <asp:GridView ID="gvTarjeta" runat="server" AutoGenerateColumns="false"
         CssClass="table table-sm" HeaderStyle-CssClass="thead-dark"
         HeaderStyle-BackColor="#243054" HeaderStyle-ForeColor="White"
-        AlternatingRowStyle-BackColor="LightBlue" OnRowCommand="gvTarjeta_RowCommand"
-        HeaderStyle-BorderStyle="None" BorderStyle="None">
+        AlternatingRowStyle-BackColor="LightBlue" OnRowCommand="gvTarjeta_RowCommand">
         <Columns>
-            <asp:BoundField HeaderText="Código" DataField="CodTarjeta" HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None"/>
-            <asp:BoundField HeaderText="Código de Usuario" DataField="CodUsuario" HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None"/>
-            <asp:BoundField HeaderText="Tipo de Tarjeta" DataField="Tipo" HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None"/>
-            <asp:BoundField HeaderText="Emisor de Tarjeta" DataField="Emisor" HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None"/>
-            <asp:BoundField HeaderText="Fecha de Emisión" DataField="FechaEmision" HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None"/>
-            <asp:BoundField HeaderText="Fecha de Vencimiento" DataField="FechaVencimiento" HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None"/>
+            <asp:BoundField HeaderText="Código" DataField="CodTarjeta" />
+            <asp:BoundField HeaderText="Código de Usuario" DataField="CodUsuario" />
+            <asp:BoundField HeaderText="Tipo de Tarjeta" DataField="Tipo" />
+            <asp:BoundField HeaderText="Emisor de Tarjeta" DataField="Emisor" />
+            <asp:BoundField HeaderText="Fecha de Emisión" DataField="FechaEmision" />
+            <asp:BoundField HeaderText="Fecha de Vencimiento" DataField="FechaVencimiento" />
             <asp:ButtonField HeaderText="Modificar" CommandName="Modificar"
-                ControlStyle-CssClass="btn btn-primary" ButtonType="Button" Text="Modificar" HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None"/>
+                ControlStyle-CssClass="btn btn-primary" ButtonType="Button" Text="Modificar" />
             <asp:ButtonField HeaderText="Eliminar" CommandName="Eliminar"
-                ControlStyle-CssClass="btn btn-danger" ButtonType="Button" Text="Eliminar" HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None"/>
+                ControlStyle-CssClass="btn btn-danger" ButtonType="Button" Text="Eliminar" />
         </Columns>
     </asp:GridView>
     <asp:LinkButton type="Button" CssClass="btn btn-success" ID="btnNuevo" runat="server"

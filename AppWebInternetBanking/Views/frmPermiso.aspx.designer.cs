@@ -78,13 +78,13 @@ namespace AppWebInternetBanking.Views
         protected global::System.Web.UI.WebControls.Literal ltrCodigoUsu;
 
         /// <summary>
-        /// DD_USU_CODIGO control.
+        /// txtCodigoUsu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DD_USU_CODIGO;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigoUsu;
 
         /// <summary>
         /// ltrTipoPermiso control.
@@ -96,13 +96,13 @@ namespace AppWebInternetBanking.Views
         protected global::System.Web.UI.WebControls.Literal ltrTipoPermiso;
 
         /// <summary>
-        /// ddlTipoLicencia control.
+        /// txtTipoPermiso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoLicencia;
+        protected global::System.Web.UI.WebControls.TextBox txtTipoPermiso;
 
         /// <summary>
         /// ltrFechaE control.

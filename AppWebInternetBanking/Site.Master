@@ -10,7 +10,7 @@
     <title><%: Page.Title %></title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
 
@@ -117,9 +117,9 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mantenimiento
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                           <!-- <li><a href="/Views/frmCuenta.aspx">Cuentas</a></li>
-                            <li><a href="/Views/frmServicio.aspx">Servicios</a></li> 
-                            <li><a href="/Views/frmMoneda.aspx">Monedas</a></li> -->
+                            <li><a href="/Views/frmCuenta.aspx">Cuentas</a></li>
+                            <li><a href="/Views/frmServicio.aspx">Servicios</a></li>
+                            <li><a href="/Views/frmMoneda.aspx">Monedas</a></li>
                             <li><a href="/Views/frmMarchamo.aspx">Marchamo</a></li>
                             <li><a href="/Views/frmDepositoPlazo.aspx">Deposito a Plazo</a></li>
                             <li><a href="/Views/frmCredito.aspx">Solicitaciones de Credito</a></li>
