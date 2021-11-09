@@ -111,15 +111,15 @@ namespace AppWebInternetBanking.Views
             if (string.IsNullOrEmpty(txtCodPrestamoMant.Text) && validar() && validarCampos())  //insertar
             {
                 DateTime theDate = DateTime.ParseExact(txtFechaSolicitudMant.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                string dateToInsert = theDate.ToString("dd-MM-yyyy");
+                //string dateToInsert = theDate.ToString("dd-MM-yyyy");
                 DateTime theDate2 = DateTime.ParseExact(txtFechaLimiteMant.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                string dateToInsert2 = theDate2.ToString("dd-MM-yyyy");
+                //string dateToInsert2 = theDate2.ToString("dd-MM-yyyy");
                 Prestamo prestamo = new Prestamo()
                 {
 
                     CodUsuario = Convert.ToInt32(ddUSU_CODIGO.SelectedValue.ToString()),
-                    FechaSolicitud = Convert.ToDateTime(dateToInsert),
-                    FechaLimite = Convert.ToDateTime(dateToInsert2),
+                    FechaSolicitud = Convert.ToDateTime(theDate),
+                    FechaLimite = Convert.ToDateTime(theDate2),
                     MontoPrestamo = Convert.ToDecimal(txtMontoPrestamoMant.Text),
                     TasaInteres = Convert.ToDecimal(ddlTasaInteres.SelectedValue)
 
@@ -147,15 +147,15 @@ namespace AppWebInternetBanking.Views
             else if (validarCampos() && validar() && !string.IsNullOrEmpty(txtCodPrestamoMant.Text)) //modificar
             {
                 DateTime theDate = DateTime.ParseExact(txtFechaSolicitudMant.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                string dateToInsert = theDate.ToString("dd-MM-yyyy");
+                //string dateToInsert = theDate.ToString("dd-MM-yyyy");
                 DateTime theDate2 = DateTime.ParseExact(txtFechaLimiteMant.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                string dateToInsert2 = theDate2.ToString("dd-MM-yyyy");
+                //string dateToInsert2 = theDate2.ToString("dd-MM-yyyy");
                 Prestamo prestamo = new Prestamo()
                 {
                     CodPrestamo = Convert.ToInt32(txtCodPrestamoMant.Text),
                     CodUsuario = Convert.ToInt32(ddUSU_CODIGO.SelectedValue.ToString()),
-                    FechaSolicitud = Convert.ToDateTime(dateToInsert),
-                    FechaLimite = Convert.ToDateTime(dateToInsert2),
+                    FechaSolicitud = Convert.ToDateTime(theDate),
+                    FechaLimite = Convert.ToDateTime(theDate2),
                     MontoPrestamo = Convert.ToDecimal(txtMontoPrestamoMant.Text),
                     TasaInteres = Convert.ToDecimal(ddlTasaInteres.SelectedValue)
                 };
