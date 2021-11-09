@@ -40,7 +40,7 @@
         <Columns>
 
             <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Codigo" DataField="CodMarchamo" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Placa" DataField="Placa" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Placa" DataField="Placa"  />
             <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Usuario" DataField="CodUsuario" />
             <asp:BoundField HeaderText="Monto" DataField="Monto" Visible="false" />
             <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Valor Vehiculo" DataField="ValorVehiculo" />
@@ -76,13 +76,13 @@
                             <td>
                                 <asp:Literal ID="ltrCodigoMarchamo" Text="Codigo" runat="server" /></td>
                             <td>
-                                <asp:TextBox ID="txtCodigoMarchamo" runat="server" Enabled="false" CssClass="form-control" /></td>
+                                <asp:TextBox ID="txtCodigoMarchamo" runat="server" Enabled="false" CssClass="form-control"/></td>
                         </tr>
                         <tr>
                             <td>
                                 <asp:Literal ID="ltrPlaca" Text="Placa" runat="server" /></td>
                             <td>
-                                <asp:TextBox ID="txtPlaca" runat="server" CssClass="form-control" /></td>
+                                <asp:TextBox ID="txtPlaca" runat="server" CssClass="form-control" MaxLength="7"/></td>
                         </tr>
                         <tr>
                             <td>

@@ -52,13 +52,7 @@ namespace AppWebInternetBanking.Views
                 lblResultado.Visible = true;
                 return false;
             }
-            if(string.IsNullOrEmpty(txtTipoLicencia.Text))
-            {
-                lblResultado.Text = "Debe ingresar un tipo de licencia";
-                lblResultado.ForeColor = Color.Maroon;
-                lblResultado.Visible = true;
-                return false;
-            }
+
             if (string.IsNullOrEmpty(txtFechaE.Text))
             {
                 lblResultado.Text = "Debe ingresar un fecha";
@@ -83,7 +77,7 @@ namespace AppWebInternetBanking.Views
                 Licencia licencia = new Licencia()
                 {
                     CodUsuario = Convert.ToInt32(txtCodigoUsu.Text),
-                    TipoLicencia = txtTipoLicencia.Text,
+                    TipoLicencia = ddlTipoLicencia.SelectedValue.ToString(),
                     FechaEmision = Convert.ToDateTime(txtFechaE.Text),
                     FechaVencimiento = Convert.ToDateTime(txtFechaV.Text)
                 };
@@ -116,7 +110,7 @@ namespace AppWebInternetBanking.Views
                 {
                     CodLicencia = Convert.ToInt32(txtCodigoMant.Text),
                     CodUsuario = Convert.ToInt32(txtCodigoUsu.Text),
-                    TipoLicencia = txtTipoLicencia.Text,
+                    TipoLicencia = ddlTipoLicencia.SelectedValue.ToString(),
                     FechaEmision = Convert.ToDateTime(txtFechaE.Text),
                     FechaVencimiento = Convert.ToDateTime(txtFechaV.Text)
                 };
@@ -201,13 +195,13 @@ namespace AppWebInternetBanking.Views
             ltrCodigoUsu.Visible = true;
             txtCodigoUsu.Visible = true;
             ltrTipoLicencia.Visible = true;
-            txtTipoLicencia.Visible = true;
+            //ddlTipoLicencia.Visible = true;
             ltrFechaE.Visible = true;
             txtFechaE.Visible = true;
             ltrFechaV.Visible = true;
             txtFechaV.Visible = true;
             txtCodigoMant.Text = string.Empty;
-            txtTipoLicencia.Text = string.Empty;
+            //txtTipoLicencia.Text = string.Empty;
             ScriptManager.RegisterStartupScript(this,
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
 
@@ -225,6 +219,9 @@ namespace AppWebInternetBanking.Views
                     btnAceptarMant.ControlStyle.CssClass = "btn btn-primary";
                     txtCodigoMant.Text = row.Cells[0].Text.Trim();
                     ///txtTipoLicencia.Text = row.Cells[1].Text.Trim();
+                    //
+                    txtFechaE.Text = row.Cells[3].Text.Trim();
+                    txtFechaV.Text = row.Cells[4].Text.Trim();
                     ScriptManager.RegisterStartupScript(this,
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
                     break;

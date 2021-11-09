@@ -77,34 +77,36 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Literal ID="ltrCodUsuarioMant" Text="Codigo Usuario" runat="server" /></td>
+                                <asp:Literal ID="ltrCodUsuarioMant" Text="Codigo Usuario" runat="server" />
+
+                            </td>
                             <td>
-                                <asp:TextBox ID="txtCodUsuarioMant" runat="server" Enabled="true" CssClass="form-control" />
-                                
+                                <asp:DropDownList ID="ddUSU_CODIGO" CssClass="form-control" runat="server">
+                                </asp:DropDownList>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <asp:Literal ID="ltrMontoPrestamoMant" Text="Monto Prestamo" runat="server" /></td>
                             <td>
-                                <asp:TextBox ID="txtMontoPrestamoMant" runat="server" Enabled="true" CssClass="form-control" />
-                                
+                                <asp:TextBox ID="txtMontoPrestamoMant" runat="server" CssClass="form-control" TextMode="Number" />
+
                             </td>
                         </tr>
-<tr>
+                        <tr>
                             <td>
                                 <asp:Literal ID="ltrFechaSolicitudMant" Text="Fecha de solicitud" runat="server" /></td>
                             <td>
-                                <asp:TextBox ID="txtFechaSolicitudMant" runat="server" CssClass="form-control" textmode="Date"/>
-                                
+                                <asp:TextBox ID="txtFechaSolicitudMant" runat="server" CssClass="form-control" TextMode="Date" />
+
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <asp:Literal ID="ltrFechaLimiteMant" Text="Fecha Limite" runat="server" /></td>
                             <td>
-                                <asp:TextBox ID="txtFechaLimiteMant" Placeholder="Ingrese la fecha limite" CssClass="form-control" runat="server" textmode="Date"/>
-                               
+                                <asp:TextBox ID="txtFechaLimiteMant" Placeholder="Ingrese la fecha limite" CssClass="form-control" runat="server" TextMode="Date" />
+
                             </td>
                         </tr>
                         <tr>

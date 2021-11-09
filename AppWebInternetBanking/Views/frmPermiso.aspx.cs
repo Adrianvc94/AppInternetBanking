@@ -17,8 +17,10 @@ namespace AppWebInternetBanking.Views
 
         IEnumerable<Permiso> permisos = new ObservableCollection<Permiso>();
         PermisoManager permisoManager = new PermisoManager();
+        IEnumerable<Usuario> usuarios = new ObservableCollection<Usuario>();
+        UsuarioManager usuarioManager = new UsuarioManager();
         static string _codigo = string.Empty;
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -33,34 +35,9 @@ namespace AppWebInternetBanking.Views
 
         private bool ValidarCampos()
         {
-            if (string.IsNullOrEmpty(txtCodigoUsu.Text))
-            {
-                lblResultado.Text = "Debe ingresar un codigo de usuario";
-                lblResultado.ForeColor = Color.Maroon;
-                lblResultado.Visible = true;
-                return false;
-            }
-            if (string.IsNullOrEmpty(txtTipoPermiso.Text))
-            {
-                lblResultado.Text = "Debe ingresar un tipo de Permiso";
-                lblResultado.ForeColor = Color.Maroon;
-                lblResultado.Visible = true;
-                return false;
-            }
-            if (string.IsNullOrEmpty(txtFechaE.Text))
-            {
-                lblResultado.Text = "Debe ingresar un fecha";
-                lblResultado.ForeColor = Color.Maroon;
-                lblResultado.Visible = true;
-                return false;
-            }
-            if (string.IsNullOrEmpty(txtFechaV.Text))
-            {
-                lblResultado.Text = "Debe ingresar un fecha";
-                lblResultado.ForeColor = Color.Maroon;
-                lblResultado.Visible = true;
-                return false;
-            }
+            DateTime.ParseExact(txtFechaE.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime.ParseExact(txtFechaV.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+
             return true;
         }
 
@@ -71,6 +48,12 @@ namespace AppWebInternetBanking.Views
                 permisos = await permisoManager.ObtenerPermisos(Session["Token"].ToString());
                 gvPermisos.DataSource = permisos.ToList();
                 gvPermisos.DataBind();
+
+                usuarios = await usuarioManager.ObtenerUsuarios(Session["Token"].ToString());
+                DD_USU_CODIGO.DataTextField = "Username";
+                DD_USU_CODIGO.DataValueField = "Codigo";
+                DD_USU_CODIGO.DataSource = usuarios.ToList();
+                DD_USU_CODIGO.DataBind();
             }
             catch (Exception)
             {
@@ -84,12 +67,16 @@ namespace AppWebInternetBanking.Views
 
             if (ValidarCampos() && string.IsNullOrEmpty(txtCodigoMant.Text)) //insertar
             {
+                DateTime theDateE = DateTime.ParseExact(txtFechaE.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                string dateToInsertE = theDateE.ToString("dd-MM-yyyy");
+                DateTime theDateV = DateTime.ParseExact(txtFechaV.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                string dateToInsertV = theDateE.ToString("dd-MM-yyyy");
                 Permiso permiso = new Permiso()
                 {
-                    CodUsuario = Convert.ToInt32(txtCodigoUsu.Text),
-                    TipoPermiso = txtTipoPermiso.Text,
-                    FechaEmision = Convert.ToDateTime(txtFechaE.Text),
-                    FechaVencimiento = Convert.ToDateTime(txtFechaV.Text)
+                    CodUsuario = Convert.ToInt32(DD_USU_CODIGO.SelectedValue.ToString()),
+                    TipoPermiso = ddlTipoLicencia.SelectedValue.ToString(),
+                    FechaEmision = Convert.ToDateTime(dateToInsertE),
+                    FechaVencimiento = Convert.ToDateTime(dateToInsertV)
                 };
 
                 Permiso permisoIngresada = await permisoManager.Ingresar(permiso, Session["Token"].ToString());
@@ -116,16 +103,20 @@ namespace AppWebInternetBanking.Views
 
             else if (ValidarCampos() && string.IsNullOrEmpty(txtCodigoMant.Text))
             {
+                DateTime theDateE = DateTime.ParseExact(txtFechaE.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                string dateToInsertE = theDateE.ToString("dd-MM-yyyy");
+                DateTime theDateV = DateTime.ParseExact(txtFechaV.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                string dateToInsertV = theDateE.ToString("dd-MM-yyyy");
                 Permiso permiso = new Permiso() //modificar
                 {
                     CodPermiso = Convert.ToInt32(txtCodigoMant.Text),
-                    CodUsuario = Convert.ToInt32(txtCodigoUsu.Text),
-                    TipoPermiso = txtTipoPermiso.Text,
-                    FechaEmision = Convert.ToDateTime(txtFechaE.Text),
-                    FechaVencimiento = Convert.ToDateTime(txtFechaV.Text)
+                    CodUsuario = Convert.ToInt32(DD_USU_CODIGO.SelectedValue.ToString()),
+                    TipoPermiso = ddlTipoLicencia.SelectedValue.ToString(),
+                    FechaEmision = Convert.ToDateTime(dateToInsertE),
+                    FechaVencimiento = Convert.ToDateTime(dateToInsertV)
                 };
 
-                Permiso permisoActualizado = await permisoManager.Actualizar(permiso, Session["Token"].ToString()); 
+                Permiso permisoActualizado = await permisoManager.Actualizar(permiso, Session["Token"].ToString());
 
                 if (!string.IsNullOrEmpty(permisoActualizado.TipoPermiso))
                 {
@@ -201,18 +192,19 @@ namespace AppWebInternetBanking.Views
             ltrTituloMantenimiento.Text = "Nueva licencia";
             btnAceptarMant.ControlStyle.CssClass = "btn btn-success";
             btnAceptarMant.Visible = true;
+            btnAceptarModal.Visible = true;
             ltrCodigoMant.Visible = true;
             txtCodigoMant.Visible = true;
             ltrCodigoUsu.Visible = true;
-            txtCodigoUsu.Visible = true;
+            //txtCodigoUsu.Visible = true;
             ltrTipoPermiso.Visible = true;
-            txtTipoPermiso.Visible = true;
+            //txtTipoPermiso.Visible = true;
             ltrFechaE.Visible = true;
             txtFechaE.Visible = true;
             ltrFechaV.Visible = true;
             txtFechaV.Visible = true;
             txtCodigoMant.Text = string.Empty;
-            txtTipoPermiso.Text = string.Empty;
+            //txtTipoPermiso.Text = string.Empty;
             ScriptManager.RegisterStartupScript(this,
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
 
@@ -229,7 +221,9 @@ namespace AppWebInternetBanking.Views
                     ltrTituloMantenimiento.Text = "Modificar Licencia";
                     btnAceptarMant.ControlStyle.CssClass = "btn btn-primary";
                     txtCodigoMant.Text = row.Cells[0].Text.Trim();
-                   
+                    txtFechaE.Text = row.Cells[3].Text.Trim();
+                    txtFechaV.Text = row.Cells[4].Text.Trim();
+
                     ScriptManager.RegisterStartupScript(this,
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
                     break;
@@ -246,8 +240,8 @@ namespace AppWebInternetBanking.Views
             }
         }
 
-        
 
-        
-    } 
+
+
+    }
 }

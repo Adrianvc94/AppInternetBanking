@@ -67,25 +67,25 @@
                             <td>
                                 <asp:Literal ID="ltrCodSobreMant" Text="Codigo Sobre" runat="server" /></td>
                             <td>
-                                <asp:TextBox ID="txtCodSobreMant" runat="server" Enabled="false" CssClass="form-control" />
+                                <asp:TextBox ID="txtCodSobreMant" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
                                 <br />
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <asp:Literal ID="ltrCodCuentaMant" Text="Codigo Cuenta" runat="server" /></td>
+
                             <td>
-                                <asp:TextBox ID="txtCodCuentaMant" runat="server" Enabled="true" CssClass="form-control" />
-                                
-                            </td>
+                                <asp:DropDownList ID="ddUSU_CODIGO" CssClass="form-control" runat="server"></asp:DropDownList></td>
+
 
                         </tr>
                         <tr>
                             <td>
                                 <asp:Literal ID="ltrSaldoMant" Text="Saldo" runat="server" /></td>
                             <td>
-                                <asp:TextBox ID="txtSaldoMant" runat="server" Enabled="true" CssClass="form-control" />
-                                
+                                <asp:TextBox ID="txtSaldoMant" runat="server" Enabled="true" CssClass="form-control" TextMode="Number" />
+
                             </td>
                         </tr>
                         <tr>
@@ -93,7 +93,7 @@
                                 <asp:Literal ID="ltrDescripcionMant" Text="Descripcion" runat="server" /></td>
                             <td>
                                 <asp:TextBox ID="txtDescripcionMant" runat="server" Enabled="true" CssClass="form-control" />
-                                
+
                             </td>
                         </tr>
                         <tr>

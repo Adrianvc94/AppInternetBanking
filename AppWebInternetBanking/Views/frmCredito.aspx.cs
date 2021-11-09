@@ -211,6 +211,7 @@ namespace AppWebInternetBanking.Views
         }
 
 
+
         protected void btnCancelarMant_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
@@ -246,6 +247,8 @@ namespace AppWebInternetBanking.Views
                 };
                 Error errorIngresado = await errorManager.Ingresar(error);
             }
+            ScriptManager.RegisterStartupScript(this,
+this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
         }
 
         protected void btnCancelarModal_Click(object sender, EventArgs e)
@@ -266,7 +269,7 @@ namespace AppWebInternetBanking.Views
                 lblResultado.ForeColor = Color.Maroon;
                 return false;
             }
-            if (string.IsNullOrEmpty(txtDescripcion.Text) || string.IsNullOrEmpty(Convert.ToString(txtMontoCredito.Text))) 
+            if (string.IsNullOrEmpty(txtDescripcion.Text) || Convert.ToDecimal(txtMontoCredito.Text) <= 0)
             {
                 lblResultado.Text = "Por favor rellene todos los espacios";
                 lblResultado.Visible = true;

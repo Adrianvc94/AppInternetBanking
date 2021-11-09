@@ -188,7 +188,7 @@ namespace AppWebInternetBanking.Views
                     ScriptManager.RegisterStartupScript(this,
                     this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
 
-                    txtCodigoMant.Text = null ;
+                    txtCodigoMant.Text = null;
                 }
                 else
                 {
@@ -250,7 +250,7 @@ namespace AppWebInternetBanking.Views
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseModal(); });", true);
         }
 
-        private bool valFecha() 
+        private bool valFecha()
         {
             try
             {
