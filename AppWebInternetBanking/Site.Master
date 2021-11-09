@@ -125,8 +125,6 @@
                             <li><a href="/Views/frmDepositoPlazo.aspx">Deposito a Plazo</a></li>
                             <li><a href="/Views/frmCredito.aspx">Solicitaciones de Credito</a></li>
                             <li><a href="/Views/frmTarjeta.aspx">Solicitaciones de Tarjeta</a></li>
-                            <li><a href="/Views/frmSobre.aspx">Sobres</a></li>
-                            <li><a href="/Views/frmPrestamo.aspx">Prestamo</a></li>
 
                         </ul>
                     </li>
