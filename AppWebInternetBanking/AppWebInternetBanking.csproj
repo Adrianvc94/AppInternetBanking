@@ -201,9 +201,11 @@
     <Content Include="Views\frmCredito.aspx" />
     <Content Include="Views\frmCuenta.aspx" />
     <Content Include="Views\frmDepositoPlazo.aspx" />
+    <Content Include="Views\frmLicencia.aspx" />
     <Content Include="Views\frmMarchamo.aspx" />
     <Content Include="Views\frmMoneda.aspx" />
     <Content Include="Views\frmPago.aspx" />
+    <Content Include="Views\frmPermiso.aspx" />
     <Content Include="Views\frmReporteError.aspx" />
     <Content Include="Views\frmReporteEstadistica.aspx" />
     <Content Include="Views\frmReporteSesion.aspx" />
@@ -237,8 +239,10 @@
     <Compile Include="Controllers\DepositoPlazoManager.cs" />
     <Compile Include="Controllers\ErrorManager.cs" />
     <Compile Include="Controllers\EstadisticaManager.cs" />
+    <Compile Include="Controllers\LicenciaManager.cs" />
     <Compile Include="Controllers\MarchamoManager.cs" />
     <Compile Include="Controllers\MonedaManager.cs" />
+    <Compile Include="Controllers\PermisoManager.cs" />
     <Compile Include="Controllers\ServicioManager.cs" />
     <Compile Include="Controllers\SesionManager.cs" />
     <Compile Include="Controllers\TarjetaManager.cs" />
@@ -273,10 +277,12 @@
     <Compile Include="Models\DepositoPlazo.cs" />
     <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Estadistica.cs" />
+    <Compile Include="Models\Licencia.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Marchamo.cs" />
     <Compile Include="Models\Moneda.cs" />
     <Compile Include="Models\Pago.cs" />
+    <Compile Include="Models\Permiso.cs" />
     <Compile Include="Models\Servicio.cs" />
     <Compile Include="Models\Sesion.cs" />
     <Compile Include="Models\Tarjeta.cs" />
@@ -333,6 +339,13 @@
     <Compile Include="Views\frmDepositoPlazo.aspx.designer.cs">
       <DependentUpon>frmDepositoPlazo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmLicencia.aspx.cs">
+      <DependentUpon>frmLicencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmLicencia.aspx.designer.cs">
+      <DependentUpon>frmLicencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmMarchamo.aspx.cs">
       <DependentUpon>frmMarchamo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -353,6 +366,13 @@
     </Compile>
     <Compile Include="Views\frmPago.aspx.designer.cs">
       <DependentUpon>frmPago.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmPermiso.aspx.cs">
+      <DependentUpon>frmPermiso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\frmPermiso.aspx.designer.cs">
+      <DependentUpon>frmPermiso.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmReporteError.aspx.cs">
       <DependentUpon>frmReporteError.aspx</DependentUpon>
