@@ -113,7 +113,7 @@ namespace AppWebInternetBanking.Views
                 DateTime theDate = DateTime.ParseExact(txtFechaSolicitudMant.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
                 string dateToInsert = theDate.ToString("dd-MM-yyyy");
                 DateTime theDate2 = DateTime.ParseExact(txtFechaLimiteMant.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                string dateToInsert2 = theDate.ToString("dd-MM-yyyy");
+                string dateToInsert2 = theDate2.ToString("dd-MM-yyyy");
                 Prestamo prestamo = new Prestamo()
                 {
 
