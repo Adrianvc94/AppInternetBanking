@@ -31,7 +31,7 @@
     <input id="myInput" placeholder="Buscar" class="form-control" type="text" />
     <asp:GridView ID="gvTarjeta" runat="server" AutoGenerateColumns="false"
         CssClass="table table-sm" HeaderStyle-CssClass="thead-dark"
-        HeaderStyle-BackColor="#1B1A1A" HeaderStyle-ForeColor="White"
+        HeaderStyle-BackColor="#243054" HeaderStyle-ForeColor="White"
         AlternatingRowStyle-BackColor="LightBlue" OnRowCommand="gvTarjeta_RowCommand"
         HeaderStyle-BorderStyle="None" BorderStyle="None">
         <Columns>
@@ -94,7 +94,7 @@
                                 <asp:DropDownList ID="ddEMISOR" CssClass="form-control" runat="server">
                                      <asp:ListItem Selected="True" Value="Visa"> Visa </asp:ListItem>
                                      <asp:ListItem Value="MasterCard"> MasterCard </asp:ListItem>
-                                     <asp:ListItem Value="American Express"> American Express </asp:ListItem>
+                                     <asp:ListItem Value="American Express"> Emrican Express </asp:ListItem>
                                 </asp:DropDownList></td>
                         </tr>
                         <tr>
