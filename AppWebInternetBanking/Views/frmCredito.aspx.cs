@@ -118,14 +118,14 @@ namespace AppWebInternetBanking.Views
             if (string.IsNullOrEmpty(txtCodigoMant.Text) && validar()) //insertar
             {
                 DateTime theDate = DateTime.ParseExact(txtFechaSolicitud.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                string dateToInsert = theDate.ToString("MM-dd-yyyy");
+                //string dateToInsert = theDate.ToString("MM-dd-yyyy");
 
                 Credito credito = new Credito()
                 {
                     CodUsuario = Convert.ToInt32(ddUSU_CODIGO.SelectedItem.Value.ToString()),
                     MontoCredito = Convert.ToDecimal(txtMontoCredito.Text),
                     Descripcion = txtDescripcion.Text,
-                    FechaSolicitud = Convert.ToDateTime(dateToInsert)
+                    FechaSolicitud = Convert.ToDateTime(theDate)
                 };
 
                 Credito creditoIngresado = await creditoManager.Ingresar(credito, Session["Token"].ToString());
@@ -161,7 +161,7 @@ namespace AppWebInternetBanking.Views
             {
 
                 DateTime theDate = DateTime.ParseExact(txtFechaSolicitud.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                string dateToInsert = theDate.ToString("dd-MM-yyyy");
+                //string dateToInsert = theDate.ToString("dd-MM-yyyy");
 
                 Credito credito = new Credito()
                 {

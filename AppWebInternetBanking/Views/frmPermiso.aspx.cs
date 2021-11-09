@@ -35,9 +35,18 @@ namespace AppWebInternetBanking.Views
 
         private bool ValidarCampos()
         {
-            DateTime.ParseExact(txtFechaE.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-            DateTime.ParseExact(txtFechaV.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-
+            try
+            {
+                DateTime.ParseExact(txtFechaE.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime.ParseExact(txtFechaV.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            }
+            catch (FormatException)
+            {
+                lblResultado.Text = "Debe ingresar todos las fechas requeridas";
+                lblResultado.Visible = true;
+                lblResultado.ForeColor = Color.Maroon;
+                return false;
+            }
             return true;
         }
 
@@ -68,15 +77,15 @@ namespace AppWebInternetBanking.Views
             if (ValidarCampos() && string.IsNullOrEmpty(txtCodigoMant.Text)) //insertar
             {
                 DateTime theDateE = DateTime.ParseExact(txtFechaE.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                string dateToInsertE = theDateE.ToString("dd-MM-yyyy");
+                //string dateToInsertE = theDateE.ToString("dd-MM-yyyy");
                 DateTime theDateV = DateTime.ParseExact(txtFechaV.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                string dateToInsertV = theDateE.ToString("dd-MM-yyyy");
+                //string dateToInsertV = theDateE.ToString("dd-MM-yyyy");
                 Permiso permiso = new Permiso()
                 {
                     CodUsuario = Convert.ToInt32(DD_USU_CODIGO.SelectedValue.ToString()),
                     TipoPermiso = ddlTipoLicencia.SelectedValue.ToString(),
-                    FechaEmision = Convert.ToDateTime(dateToInsertE),
-                    FechaVencimiento = Convert.ToDateTime(dateToInsertV)
+                    FechaEmision = Convert.ToDateTime(theDateE),
+                    FechaVencimiento = Convert.ToDateTime(theDateV)
                 };
 
                 Permiso permisoIngresada = await permisoManager.Ingresar(permiso, Session["Token"].ToString());
@@ -104,16 +113,16 @@ namespace AppWebInternetBanking.Views
             else if (ValidarCampos() && !string.IsNullOrEmpty(txtCodigoMant.Text))
             {
                 DateTime theDateE = DateTime.ParseExact(txtFechaE.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                string dateToInsertE = theDateE.ToString("dd-MM-yyyy");
+                //string dateToInsertE = theDateE.ToString("dd-MM-yyyy");
                 DateTime theDateV = DateTime.ParseExact(txtFechaV.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                string dateToInsertV = theDateE.ToString("dd-MM-yyyy");
+                //string dateToInsertV = theDateE.ToString("dd-MM-yyyy");
                 Permiso permiso = new Permiso() //modificar
                 {
                     CodPermiso = Convert.ToInt32(txtCodigoMant.Text),
                     CodUsuario = Convert.ToInt32(DD_USU_CODIGO.SelectedValue.ToString()),
                     TipoPermiso = ddlTipoLicencia.SelectedValue.ToString(),
-                    FechaEmision = Convert.ToDateTime(dateToInsertE),
-                    FechaVencimiento = Convert.ToDateTime(dateToInsertV)
+                    FechaEmision = Convert.ToDateTime(theDateE),
+                    FechaVencimiento = Convert.ToDateTime(theDateV)
                 };
 
                 Permiso permisoActualizado = await permisoManager.Actualizar(permiso, Session["Token"].ToString());
