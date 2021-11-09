@@ -12,7 +12,7 @@ using API.Models;
 
 namespace API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class SobresController : ApiController
     {
         private INTERNET_BANKING_DW1_3C2021Entities db = new INTERNET_BANKING_DW1_3C2021Entities();
@@ -68,7 +68,7 @@ namespace API.Controllers
 
         // POST: api/Servicios
         [ResponseType(typeof(Sobre))]
-        public IHttpActionResult PostServicio(Sobre sobre)
+        public IHttpActionResult PostSobre(Sobre sobre)
         {
             if (!ModelState.IsValid)
             {
