@@ -30,23 +30,24 @@
     <h1>Mantenimiento de créditos</h1>
     <input id="myInput" placeholder="Buscar" class="form-control" type="text" />
     <asp:GridView ID="gvCredito" runat="server" AutoGenerateColumns="false"
-        CssClass="table table-sm" HeaderStyle-CssClass="thead-dark"
-        HeaderStyle-BackColor="#243054" HeaderStyle-ForeColor="White"
+        HeaderStyle-BackColor="#1B1A1A" HeaderStyle-BorderStyle="None" BorderStyle="None" 
+        HeaderStyle-CssClass="thead-dark" HeaderStyle-ForeColor="White"
         AlternatingRowStyle-BackColor="LightBlue" OnRowCommand="gvCredito_RowCommand">
         <Columns>
-            <asp:BoundField HeaderText="Código" DataField="CodCredito" />
-            <asp:BoundField HeaderText="Código de Usuario" DataField="CodUsuario" />
-            <asp:BoundField HeaderText="Monto Crédito" DataField="MontoCredito" />
-            <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-            <asp:BoundField HeaderText="Fecha de Solicitud" DataField="FechaSolicitud" />
-            <asp:ButtonField HeaderText="Modificar" CommandName="Modificar"
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Código" DataField="CodCredito" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Código de Usuario" DataField="CodUsuario" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Monto Crédito" DataField="MontoCredito" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Descripcion" DataField="Descripcion" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Fecha de Solicitud" DataField="FechaSolicitud" />
+
+            <asp:ButtonField  HeaderText="Modificar" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" CommandName="Modificar" HeaderStyle-CssClass="text-center"
                 ControlStyle-CssClass="btn btn-primary" ButtonType="Button" Text="Modificar" />
-            <asp:ButtonField HeaderText="Eliminar" CommandName="Eliminar"
+            <asp:ButtonField HeaderText="Eliminar" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" CommandName="Eliminar" HeaderStyle-CssClass="text-center"
                 ControlStyle-CssClass="btn btn-danger" ButtonType="Button" Text="Eliminar" />
         </Columns>
     </asp:GridView>
-    <asp:LinkButton type="Button" CssClass="btn btn-success" ID="btnNuevo" runat="server" OnClick="btnNuevo_Click"
-        Text="<span aria-hidden='true' class='glyphicon glyphicon-floppy-disk'></span> Nuevo" />
+    <asp:LinkButton type="Button" CssClass="btn btn-success" ID="btnNuevo" runat="server"
+        Text="<span aria-hidden='true' class='glyphicon glyphicon-floppy-disk'></span> Nuevo" OnClick="btnNuevo_Click"/>
     <br />
     <asp:Label ID="lblStatus" ForeColor="Maroon" runat="server" Visible="false" />
 
@@ -96,8 +97,10 @@
                     <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="False" runat="server" />
                 </div>
                 <div class="modal-footer">
-                    <asp:LinkButton type="button" OnClick="btnAceptarMant_Click" CssClass="btn btn-success" ID="btnAceptarMant" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-ok'></span> Aceptar" />
-                    <asp:LinkButton type="button" OnClick="btnCancelarMant_Click" CssClass="btn btn-danger" ID="btnCancelarMant" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-remove'></span> Cerrar" />
+                    <asp:LinkButton type="button" CssClass="btn btn-success" ID="btnAceptarMant" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-ok'></span> Aceptar" OnClick="btnAceptarMant_Click" />/>
+
+                    <asp:LinkButton type="button" CssClass="btn btn-danger" ID="btnCancelarMant" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-remove'></span> Cerrar" OnClick="btnCancelarMant_Click" />/>
+
                 </div>
             </div>
         </div>
@@ -115,8 +118,10 @@
                         <asp:Literal ID="ltrModalMensaje" runat="server" /></p>
                 </div>
                 <div class="modal-footer">
-                    <asp:LinkButton type="button" CssClass="btn btn-success" ID="btnAceptarModal" OnClick="btnAceptarModal_Click" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-ok'></span> Aceptar" />
-                    <asp:LinkButton type="button" CssClass="btn btn-danger" ID="btnCancelarModal" OnClick="btnCancelarModal_Click" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-remove'></span> Cerrar" />
+                    <asp:LinkButton type="button" CssClass="btn btn-success" ID="btnAceptarModal" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-ok'></span> Aceptar" OnClick="btnAceptarModal_Click" />/>
+
+                    <asp:LinkButton type="button" CssClass="btn btn-danger" ID="btnCancelarModal" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-remove'></span> Cerrar" OnClick="btnCancelarModal_Click" />/>
+
                 </div>
             </div>
         </div>

@@ -34,19 +34,19 @@
     <input id="MyInput" placeholder="Buscar" class="form-control" type="text" />
     <asp:GridView ID="gvPrestamos" runat="server" AutoGenerateColumns="false"
         CssClass="table table-sm" HeaderStyle-CssClass="thead-dark"
-        HeaderStyle-BackColor="#1B1A1A" HeaderStyle-BorderStyle="None" BorderStyle="None" HeaderStyle-ForeColor="White"
+        HeaderStyle-BackColor="#243054" HeaderStyle-ForeColor="White"
         AlternatingRowStyle-BackColor="LightBlue" OnRowCommand="gvPrestamos_RowCommand">
 
         <Columns>
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="CodPrestamo" DataField="CodPrestamo" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="CodUsuario" DataField="CodUsuario" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="MontoPrestamo" DataField="MontoPrestamo" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="FechaSolicitud" DataField="FechaSolicitud" DataFormatString="{0:M/dd/yyyy}" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="FechaLimite" DataField="FechaLimite" DataFormatString="{0:M/dd/yyyy}" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="TasaInteres" DataField="TasaInteres" />
-            <asp:ButtonField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Modificar" CommandName="Modificar"
+            <asp:BoundField HeaderText="CodPrestamo" DataField="CodPrestamo" />
+            <asp:BoundField HeaderText="CodUsuario" DataField="CodUsuario" />
+            <asp:BoundField HeaderText="MontoPrestamo" DataField="MontoPrestamo" />
+            <asp:BoundField HeaderText="FechaSolicitud" DataField="FechaSolicitud" DataFormatString="{0:M/dd/yyyy}" />
+            <asp:BoundField HeaderText="FechaLimite" DataField="FechaLimite" DataFormatString="{0:M/dd/yyyy}" />
+            <asp:BoundField HeaderText="TasaInteres" DataField="TasaInteres" />
+            <asp:ButtonField HeaderText="Modificar" CommandName="Modificar"
                 ControlStyle-CssClass="btn btn-primary" ButtonType="Button" Text="Modificar" />
-            <asp:ButtonField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Eliminar" CommandName="Eliminar"
+            <asp:ButtonField HeaderText="Eliminar" CommandName="Eliminar"
                 ControlStyle-CssClass="btn btn-danger" ButtonType="Button" Text="Eliminar" />
         </Columns>
     </asp:GridView>

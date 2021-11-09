@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 
 namespace AppWebInternetBanking.Views
 {
@@ -30,12 +30,11 @@ namespace AppWebInternetBanking.Views
                     InicializarControles();
             }
         }
-
         private async void InicializarControles()
         {
             try
             {
-                credito = await creditoManager.ObtenerCredito(Session["Token"].ToString());
+                credito = await creditoManager.ObtenerCreditos(Session["Token"].ToString());
                 gvCredito.DataSource = credito.ToList();
                 gvCredito.DataBind();
 
@@ -51,6 +50,7 @@ namespace AppWebInternetBanking.Views
                 lblStatus.Visible = true;
             }
         }
+
 
         protected void gvCredito_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -82,12 +82,10 @@ namespace AppWebInternetBanking.Views
                 default:
                     break;
             }
-
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
-
             ltrTituloMantenimiento.Text = "Nuevo credito";
             btnAceptarMant.ControlStyle.CssClass = "btn btn-success";
             btnAceptarMant.Visible = true;
@@ -111,9 +109,10 @@ namespace AppWebInternetBanking.Views
 
             ScriptManager.RegisterStartupScript(this,
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
+
         }
 
-        protected async void btnAceptarMant_Click(object sender, EventArgs e)
+        protected async void btnAceptarMant_ClickAsync(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCodigoMant.Text) && validar()) //insertar
             {
@@ -210,13 +209,12 @@ namespace AppWebInternetBanking.Views
             }
         }
 
-
         protected void btnCancelarMant_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
         }
 
-        protected async void btnAceptarModal_Click(object sender, EventArgs e)
+        protected async void btnAceptarModal_ClickAsync(object sender, EventArgs e)
         {
             try
             {
@@ -246,13 +244,13 @@ namespace AppWebInternetBanking.Views
                 };
                 Error errorIngresado = await errorManager.Ingresar(error);
             }
+
         }
 
         protected void btnCancelarModal_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseModal(); });", true);
         }
-
         private bool validar()
         {
             try
@@ -266,7 +264,7 @@ namespace AppWebInternetBanking.Views
                 lblResultado.ForeColor = Color.Maroon;
                 return false;
             }
-            if (string.IsNullOrEmpty(txtDescripcion.Text) || string.IsNullOrEmpty(Convert.ToString(txtMontoCredito.Text))) 
+            if (string.IsNullOrEmpty(txtDescripcion.Text) || string.IsNullOrEmpty(Convert.ToString(txtMontoCredito.Text)))
             {
                 lblResultado.Text = "Por favor rellene todos los espacios";
                 lblResultado.Visible = true;

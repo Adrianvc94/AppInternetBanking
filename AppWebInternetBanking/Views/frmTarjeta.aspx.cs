@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 
 namespace AppWebInternetBanking.Views
 {
@@ -18,6 +20,7 @@ namespace AppWebInternetBanking.Views
         IEnumerable<Usuario> usuarios = new ObservableCollection<Usuario>();
         UsuarioManager usuarioManager = new UsuarioManager();
         static string _codigo = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -79,11 +82,11 @@ namespace AppWebInternetBanking.Views
                 default:
                     break;
             }
+
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
-
             ltrTituloMantenimiento.Text = "Nueva Tarjeta";
             btnAceptarMant.ControlStyle.CssClass = "btn btn-success";
             btnAceptarMant.Visible = true;
@@ -105,11 +108,11 @@ namespace AppWebInternetBanking.Views
 
             ScriptManager.RegisterStartupScript(this,
                 this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
+
         }
 
-        protected async void btnAceptarMant_Click(object sender, EventArgs e)
+        protected async Task btnAceptarMant_ClickAsync(object sender, EventArgs e)
         {
-
             if (string.IsNullOrEmpty(txtCodigoMant.Text) && valFecha()) //insertar
             {
                 DateTime theDateE = DateTime.ParseExact(txtFechaEmision.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
@@ -188,7 +191,7 @@ namespace AppWebInternetBanking.Views
                     ScriptManager.RegisterStartupScript(this,
                     this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
 
-                    txtCodigoMant.Text = null ;
+                    txtCodigoMant.Text = null;
                 }
                 else
                 {
@@ -207,6 +210,7 @@ namespace AppWebInternetBanking.Views
                   this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
                 txtCodigoMant.Text = null;
             }
+
         }
 
         protected void btnCancelarMant_Click(object sender, EventArgs e)
@@ -214,7 +218,7 @@ namespace AppWebInternetBanking.Views
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
         }
 
-        protected async void btnAceptarModal_Click(object sender, EventArgs e)
+        protected async Task btnAceptarModal_ClickAsync(object sender, EventArgs e)
         {
             try
             {
@@ -243,14 +247,14 @@ namespace AppWebInternetBanking.Views
                 };
                 Error errorIngresado = await errorManager.Ingresar(error);
             }
+
         }
 
         protected void btnCancelarModal_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseModal(); });", true);
         }
-
-        private bool valFecha() 
+        private bool valFecha()
         {
             try
             {
