@@ -6,7 +6,6 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
     <title></title>
-
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>
 <body>

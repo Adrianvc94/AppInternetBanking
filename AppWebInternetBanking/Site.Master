@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %></title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
 
     <asp:PlaceHolder runat="server">
@@ -45,7 +45,6 @@
 
         .navbar {
             background-color: #ebe8e5;
-
         }
 
         .navbar-inverse .navbar-nav > li > a {
@@ -62,7 +61,7 @@
             padding: 5px 15px;
         }
 
-        .navbar-nav{
+        .navbar-nav {
             position: relative;
             right: -100px;
             margin: auto 0;
@@ -75,16 +74,15 @@
             justify-content: space-evenly;
         }
 
-        footer{
+        footer {
             position: absolute;
             bottom: 12px;
             width: 50%;
         }
-
     </style>
 
 </head>
-<body style="padding: 5px; background-color: #292929; font-family:'Roboto', sans-serif;">
+<body style="padding: 5px; background-color: #292929; font-family: 'Roboto', sans-serif;">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -109,7 +107,8 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="../Default.aspx"><img src="/img/logo.png" width="250" height="45" alt="Logo" /></a>
+                    <a class="navbar-brand" href="../Default.aspx">
+                        <img src="/img/logo.png" width="250" height="45" alt="Logo" /></a>
 
                 </div>
                 <ul class="nav navbar-nav">
@@ -118,13 +117,17 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mantenimiento
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/Views/frmCuenta.aspx">Cuentas</a></li>
-                            <li><a href="/Views/frmServicio.aspx">Servicios</a></li>
-                            <li><a href="/Views/frmMoneda.aspx">Monedas</a></li>
+                           <!-- <li><a href="/Views/frmCuenta.aspx">Cuentas</a></li>
+                            <li><a href="/Views/frmServicio.aspx">Servicios</a></li> 
+                            <li><a href="/Views/frmMoneda.aspx">Monedas</a></li> -->
                             <li><a href="/Views/frmMarchamo.aspx">Marchamo</a></li>
                             <li><a href="/Views/frmDepositoPlazo.aspx">Deposito a Plazo</a></li>
                             <li><a href="/Views/frmCredito.aspx">Solicitaciones de Credito</a></li>
                             <li><a href="/Views/frmTarjeta.aspx">Solicitaciones de Tarjeta</a></li>
+                            <li><a href="/Views/frmSobre.aspx">Sobres</a></li>
+                            <li><a href="/Views/frmPrestamo.aspx">Prestamos</a></li>
+                            <li><a href="/Views/frmPermiso.aspx">Permisos</a></li>
+                            <li><a href="/Views/frmLicencia.aspx">Licencias</a></li>
 
                         </ul>
                     </li>
@@ -168,7 +171,7 @@
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            
+
 
             <footer>
                 <hr />
@@ -179,3 +182,4 @@
     </form>
 </body>
 </html>
+

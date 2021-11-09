@@ -11,17 +11,17 @@ namespace AppWebInternetBanking.Views
 {
 
 
-    public partial class frmDepositoPlazo
+    public partial class frmPermiso
     {
 
         /// <summary>
-        /// gvDepositoPlazo control.
+        /// gvPermisos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvDepositoPlazo;
+        protected global::System.Web.UI.WebControls.GridView gvPermisos;
 
         /// <summary>
         /// btnNuevo control.
@@ -51,94 +51,94 @@ namespace AppWebInternetBanking.Views
         protected global::System.Web.UI.WebControls.Literal ltrTituloMantenimiento;
 
         /// <summary>
-        /// ltrCodigoPlazo control.
+        /// ltrCodigoMant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrCodigoPlazo;
+        protected global::System.Web.UI.WebControls.Literal ltrCodigoMant;
 
         /// <summary>
-        /// txtCodigoPlazo control.
+        /// txtCodigoMant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigoPlazo;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigoMant;
 
         /// <summary>
-        /// ltrCodUsuario control.
+        /// ltrCodigoUsu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrCodUsuario;
+        protected global::System.Web.UI.WebControls.Literal ltrCodigoUsu;
 
         /// <summary>
-        /// ddUSU_CODIGO control.
+        /// DD_USU_CODIGO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddUSU_CODIGO;
+        protected global::System.Web.UI.WebControls.DropDownList DD_USU_CODIGO;
 
         /// <summary>
-        /// ltrCantidadPlazos control.
+        /// ltrTipoPermiso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrCantidadPlazos;
+        protected global::System.Web.UI.WebControls.Literal ltrTipoPermiso;
 
         /// <summary>
-        /// txtCantidadPlazos control.
+        /// ddlTipoLicencia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCantidadPlazos;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoLicencia;
 
         /// <summary>
-        /// ltrTotalPagar control.
+        /// ltrFechaE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrTotalPagar;
+        protected global::System.Web.UI.WebControls.Literal ltrFechaE;
 
         /// <summary>
-        /// txtTotalPagar control.
+        /// txtFechaE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotalPagar;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaE;
 
         /// <summary>
-        /// ltrCodMoneda control.
+        /// ltrFechaV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrCodMoneda;
+        protected global::System.Web.UI.WebControls.Literal ltrFechaV;
 
         /// <summary>
-        /// ddUSU_MONEDA control.
+        /// txtFechaV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddUSU_MONEDA;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaV;
 
         /// <summary>
         /// lblResultado control.

@@ -22,7 +22,7 @@
         $(document).ready(function () { //filtrar el datagridview
             $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#MainContent_gvServicios tr").filter(function () {
+                $("#MainContent_gvDepositoPlazo tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
@@ -79,12 +79,12 @@
 
               <tr>
                  <td><asp:Literal ID="ltrCantidadPlazos" Text="Cantidad de Plazos" runat="server" /></td>
-                 <td><asp:TextBox ID="txtCantidadPlazos" TextMode="Number" runat="server" CssClass="form-control" /></td>
+                 <td><asp:TextBox ID="txtCantidadPlazos" TextMode="Number" runat="server" CssClass="form-control" MaxLength="2"/></td>
               </tr>
               
               <tr>
                  <td><asp:Literal ID="ltrTotalPagar" Text="Total a pagar" runat="server" /></td>
-                 <td><asp:TextBox ID="txtTotalPagar" TextMode="Number" runat="server" CssClass="form-control" /></td>
+                 <td><asp:TextBox ID="txtTotalPagar" TextMode="Number" runat="server" CssClass="form-control"  /></td>
               </tr>
 
               <tr>

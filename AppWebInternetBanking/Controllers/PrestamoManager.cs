@@ -7,11 +7,12 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+
 namespace AppWebInternetBanking.Controllers
 {
-    public class CreditoManager
+    public class PrestamoManager
     {
-        string UrlBase = "http://localhost:49220/api/Credito/";
+        string UrlBase = "http://localhost:49220/api/Prestamos/";
 
         HttpClient GetClient(string token)
         {
@@ -23,51 +24,52 @@ namespace AppWebInternetBanking.Controllers
             return httpClient;
         }
 
-        public async Task<Credito> ObtenerCredito(string token, string codigo)
+
+        public async Task<Prestamo> ObtenerPrestamo(string token, string codigo)
         {
             HttpClient httpClient = GetClient(token);
 
             var response = await httpClient.GetStringAsync(string.Concat(UrlBase, codigo));
 
-            return JsonConvert.DeserializeObject<Credito>(response);
+            return JsonConvert.DeserializeObject<Prestamo>(response);
         }
 
-        public async Task<IEnumerable<Credito>> ObtenerCredito(string token)
+        public async Task<IEnumerable<Prestamo>> ObtenerPrestamos(string token)
         {
             HttpClient httpClient = GetClient(token);
 
             var response = await httpClient.GetStringAsync(UrlBase);
 
-            return JsonConvert.DeserializeObject<IEnumerable<Credito>>(response);
+            return JsonConvert.DeserializeObject<IEnumerable<Prestamo>>(response);
         }
 
-        public async Task<Credito> Ingresar(Credito credito, string token)
+        public async Task<Prestamo> Ingresar(Prestamo prestamo, string token)
         {
             HttpClient httpClient = GetClient(token);
 
             var response = await httpClient.PostAsync(UrlBase,
-                new StringContent(JsonConvert.SerializeObject(credito), Encoding.UTF8, "application/json"));
+                new StringContent(JsonConvert.SerializeObject(prestamo), Encoding.UTF8, "application/json"));
 
-            return JsonConvert.DeserializeObject<Credito>(await response.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<Prestamo>(await response.Content.ReadAsStringAsync());
         }
 
-        public async Task<Credito> Actualizar(Credito credito, string token)
+        public async Task<Prestamo> Actualizar(Prestamo prestamo, string token)
         {
             HttpClient httpClient = GetClient(token);
 
             var response = await httpClient.PutAsync(UrlBase,
-                new StringContent(JsonConvert.SerializeObject(credito), Encoding.UTF8, "application/json"));
+                new StringContent(JsonConvert.SerializeObject(prestamo), Encoding.UTF8, "application/json"));
 
-            return JsonConvert.DeserializeObject<Credito>(await response.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<Prestamo>(await response.Content.ReadAsStringAsync());
         }
 
-        public async Task<Credito> Eliminar(string codigo, string token)
+        public async Task<Prestamo> Eliminar(string codigo, string token)
         {
             HttpClient httpClient = GetClient(token);
 
             var response = await httpClient.DeleteAsync(string.Concat(UrlBase, codigo));
 
-            return JsonConvert.DeserializeObject<Credito>(await response.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<Prestamo>(await response.Content.ReadAsStringAsync());
         }
     }
 }
