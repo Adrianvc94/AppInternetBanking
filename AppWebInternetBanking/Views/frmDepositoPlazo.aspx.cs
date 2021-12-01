@@ -60,7 +60,7 @@ namespace AppWebInternetBanking.Views
 
 
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 lblStatus.Text = "Hubo un error al cargar la lista de depositos a plazo";
                 lblStatus.Visible = true;

@@ -10,14 +10,14 @@
     <title><%: Page.Title %></title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <!--  <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" /> -->
     <link rel="icon" type="image/x-icon" href="~/img/logo.ico" />
@@ -117,7 +117,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mantenimiento
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                           <!-- <li><a href="/Views/frmCuenta.aspx">Cuentas</a></li>
+                            <!-- <li><a href="/Views/frmCuenta.aspx">Cuentas</a></li>
                             <li><a href="/Views/frmServicio.aspx">Servicios</a></li> 
                             <li><a href="/Views/frmMoneda.aspx">Monedas</a></li> -->
                             <li><a href="/Views/frmMarchamo.aspx">Marchamo</a></li>
