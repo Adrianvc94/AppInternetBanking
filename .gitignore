@@ -5,6 +5,8 @@
 
 # Ignore configurations
 *.config
+API/Web.config
+AppWebInternetBanking/Web.config
 
 # User-specific files
 *.rsuser
