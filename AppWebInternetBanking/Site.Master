@@ -39,7 +39,7 @@
             color: white;
         }
 
-        p {
+        .col-md-4 > p {
             color: white;
         }
 
@@ -78,6 +78,22 @@
             position: absolute;
             bottom: 12px;
             width: 50%;
+        }
+
+        .dataTables_filter > label{
+            color:white;
+        }
+
+        .dataTables_filter > label > input{
+            color:black;
+        }
+
+        .dt-button-info > h2{
+            color: black;
+        }
+
+        .dataTables_info{
+            color:white!important;
         }
     </style>
 

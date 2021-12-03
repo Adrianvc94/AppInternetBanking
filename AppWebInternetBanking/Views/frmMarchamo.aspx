@@ -2,6 +2,17 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+
+
     <script type="text/javascript">
 
         function openModal() {
@@ -28,28 +39,46 @@
                 });
             });
         });
+
+
+
+        $(document).ready(function () {
+            $('[id*=gvMarchamos]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+                dom: 'Bfrtip',
+                'aoColumnDefs': [{ 'bSortable': true, 'aTargets': [0] }],
+                'iDisplayLength': 20,
+                buttons: [
+                    { extend: 'copy', text: 'Copy to clipboard', className: 'exportExcel', exportOptions: { modifier: { page: 'all' } } },
+                    { extend: 'excel', text: 'Export to Excel', className: 'exportExcel', filename: 'Marchamos_Excel', exportOptions: { modifier: { page: 'all' } } },
+                    { extend: 'csv', text: 'Export to CSV', className: 'exportExcel', filename: 'Marchamos_Csv', exportOptions: { modifier: { page: 'all' } } },
+                    { extend: 'pdf', text: 'Export to PDF', className: 'exportExcel', filename: 'Marchamos_Pdf', orientation: 'landscape', pageSize: 'LEGAL', exportOptions: { modifier: { page: 'all' }, columns: ':visible' } }
+                ]
+            });
+        });
+
     </script>
 
+
+
     <h1>Mantenimiento de Marchamos</h1>
-    <input id="myInput" placeholder="Buscar" class="form-control" type="text" />
     <br />
     <asp:GridView ID="gvMarchamos" runat="server" AutoGenerateColumns="false"
         CssClass="table table-sm text-center" HeaderStyle-CssClass="thead-dark"
-        HeaderStyle-BackColor="#1B1A1A" HeaderStyle-BorderStyle="None" BorderStyle="None"  HeaderStyle-ForeColor="White"
+        HeaderStyle-BackColor="#1B1A1A" HeaderStyle-BorderStyle="None" BorderStyle="None" HeaderStyle-ForeColor="White"
         AlternatingRowStyle-BackColor="LightBlue" OnRowCommand="gvMarchamos_RowCommand">
         <Columns>
 
             <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Codigo" DataField="CodMarchamo" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Placa" DataField="Placa"  />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Placa" DataField="Placa" />
             <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Usuario" DataField="CodUsuario" />
             <asp:BoundField HeaderText="Monto" DataField="Monto" Visible="false" />
             <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Valor Vehiculo" DataField="ValorVehiculo" />
             <asp:BoundField HeaderText="Tasa" DataField="Tasa" Visible="false" />
             <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Total a Pagar" DataField="TotalPagar" />
 
-            <asp:ButtonField HeaderStyle-CssClass="text-center" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" HeaderStyle-BorderStyle="None"  ItemStyle-BorderStyle="None" HeaderText="Modificar" CommandName="Modificar"
+            <asp:ButtonField HeaderStyle-CssClass="text-center" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" HeaderStyle-BorderStyle="None" ItemStyle-BorderStyle="None" HeaderText="Modificar" CommandName="Modificar"
                 ControlStyle-CssClass="btn btn-primary" ButtonType="Button" Text="Modificar" />
-            <asp:ButtonField HeaderStyle-CssClass="text-center" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" HeaderStyle-BorderStyle="None" ItemStyle-BorderStyle="None"  HeaderText="Eliminar" CommandName="Eliminar"
+            <asp:ButtonField HeaderStyle-CssClass="text-center" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" HeaderStyle-BorderStyle="None" ItemStyle-BorderStyle="None" HeaderText="Eliminar" CommandName="Eliminar"
                 ControlStyle-CssClass="btn btn-danger" ButtonType="Button" Text="Eliminar" />
         </Columns>
     </asp:GridView>
@@ -76,13 +105,13 @@
                             <td>
                                 <asp:Literal ID="ltrCodigoMarchamo" Text="Codigo" runat="server" /></td>
                             <td>
-                                <asp:TextBox ID="txtCodigoMarchamo" runat="server" Enabled="false" CssClass="form-control"/></td>
+                                <asp:TextBox ID="txtCodigoMarchamo" runat="server" Enabled="false" CssClass="form-control" /></td>
                         </tr>
                         <tr>
                             <td>
                                 <asp:Literal ID="ltrPlaca" Text="Placa" runat="server" /></td>
                             <td>
-                                <asp:TextBox ID="txtPlaca" runat="server" CssClass="form-control" MaxLength="7"/></td>
+                                <asp:TextBox ID="txtPlaca" runat="server" CssClass="form-control" MaxLength="7" /></td>
                         </tr>
                         <tr>
                             <td>
@@ -137,7 +166,8 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                        <asp:Literal ID="ltrModalMensaje" runat="server" /></p>
+                        <asp:Literal ID="ltrModalMensaje" runat="server" />
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <asp:LinkButton type="button" CssClass="btn btn-success" ID="btnAceptarModal" OnClick="btnAceptarModal_Click" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-ok'></span> Aceptar" />
