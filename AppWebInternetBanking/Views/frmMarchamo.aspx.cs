@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,6 +20,11 @@ namespace AppWebInternetBanking.Views
         UsuarioManager usuarioManager = new UsuarioManager();
         static string _codigo = string.Empty;
 
+
+        public string labelsGrafico = string.Empty;
+        public string backgroundcolorsGrafico = string.Empty;
+        public string dataGrafico = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -26,8 +32,39 @@ namespace AppWebInternetBanking.Views
                 if (Session["CodigoUsuario"] == null)
                     Response.Redirect("~/Login.aspx");
                 else
+                {
+                    ObtenerDatosgrafico();
                     InicializarControles();
+                    
+                }
+
             }
+        }
+
+        private async void ObtenerDatosgrafico()
+        {
+            if (marchamos.Count() == 0)
+            {
+                marchamos = await marchamoManager.ObtenerMarchamos(Session["Token"].ToString());
+            }
+            StringBuilder labels = new StringBuilder();
+            StringBuilder data = new StringBuilder();
+            StringBuilder backgroundColors = new StringBuilder();
+
+            var random = new Random();
+
+            foreach (var marchamo in marchamos.OrderByDescending(x => x.TotalPagar).Take(10))
+            {
+                string color = String.Format("#{0:X6}", random.Next(0x1000000));
+                labels.Append(string.Format("'{0} {1}',", "Placa:", marchamo.Placa));
+                data.Append(string.Format("'{0}',", marchamo.TotalPagar));
+                backgroundColors.Append(string.Format("'{0}',", color));
+
+                labelsGrafico = labels.ToString().Substring(0, labels.Length - 1);
+                dataGrafico = data.ToString().Substring(0, data.Length - 1);
+                backgroundcolorsGrafico = backgroundColors.ToString().Remove(backgroundColors.Length - 1, 1);
+            }
+
         }
 
         private async void InicializarControles()
@@ -95,7 +132,7 @@ namespace AppWebInternetBanking.Views
         {
             double valorFiscal = Convert.ToDouble(txtValorVehiculo.Text);
 
-            double TotalMarchamo = ( (valorFiscal * (0.535 / 100)) + (valorFiscal * (0.0695 / 100)) + (valorFiscal * (0.244 / 100)) + (valorFiscal * (2.481 / 100)) + (valorFiscal * (0.00427 / 100)) + (valorFiscal * (0.0238 / 100)) + (valorFiscal * (0.0409 / 100)) );
+            double TotalMarchamo = ((valorFiscal * (0.535 / 100)) + (valorFiscal * (0.0695 / 100)) + (valorFiscal * (0.244 / 100)) + (valorFiscal * (2.481 / 100)) + (valorFiscal * (0.00427 / 100)) + (valorFiscal * (0.0238 / 100)) + (valorFiscal * (0.0409 / 100)));
 
             return Convert.ToDecimal(TotalMarchamo);
         }
@@ -125,6 +162,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     Correo correo = new Correo();
                     correo.Enviar("Nuevo marchamo incluido", marchamoIngresado.Placa, "svillagra07@gmail.com",
@@ -165,6 +203,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     Correo correo = new Correo();
                     correo.Enviar("Marchamo actualizado con exito", marchamoActualizado.Placa, "svillagra07@gmail.com",
@@ -205,6 +244,7 @@ namespace AppWebInternetBanking.Views
                     btnAceptarModal.Visible = false;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { openModal(); });", true);
                     InicializarControles();
+                    ObtenerDatosgrafico();
                 }
             }
             catch (Exception ex)

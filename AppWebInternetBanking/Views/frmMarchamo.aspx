@@ -177,4 +177,44 @@
         </div>
     </div>
 
+
+      <div class="row graficos-container">
+        <div class="col-sm">
+            <div id="canvas-holder" style="width: 100%">
+                <canvas id="vistas-chart" class="graficos"></canvas>
+            </div>
+            <script>
+                new Chart(document.getElementById("vistas-chart"), {
+                    type: 'bar',
+                    data: {
+                        labels: [<%= this.labelsGrafico %>],
+                        datasets: [{
+                            label: 'Marchamo',
+                            backgroundColor: [
+                                "#54B4B8",
+                                "#F14D4A",
+                                "#F28705",
+                                "#54B4B8",
+                                "#F14D4A",
+                                "#F28705",
+                                "#54B4B8",
+                                "#F14D4A",
+                                "#F28705",
+                                "#54B4B8"
+                            ],
+                              data: [<%= this.dataGrafico %>]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Marchamos más costosos'
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
 </asp:Content>

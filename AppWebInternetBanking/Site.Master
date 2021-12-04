@@ -76,24 +76,42 @@
 
         footer {
             position: absolute;
-            bottom: 12px;
+            /*            bottom: 12px;*/
             width: 50%;
+            color: white;
         }
 
-        .dataTables_filter > label{
-            color:white;
+        .dataTables_filter > label {
+            color: white;
         }
 
-        .dataTables_filter > label > input{
-            color:black;
-        }
+            .dataTables_filter > label > input {
+                color: black;
+            }
 
-        .dt-button-info > h2{
+        .dt-button-info > h2 {
             color: black;
         }
 
-        .dataTables_info{
-            color:white!important;
+        .dataTables_info {
+            color: white !important;
+        }
+
+
+        /*////////////////////////////////////////////////*/
+        /*////////////////////////////////////////////////*/
+        /*////////////////////////////////////////////////*/
+        /*  GRAFICOS        */
+        /*////////////////////////////////////////////////*/
+        /*////////////////////////////////////////////////*/
+        /*////////////////////////////////////////////////*/
+        .graficos-container{
+            margin-top: 50px;
+        }
+        .graficos {
+            background-color: #DEDAD4;
+            border-radius: 10px;
+            padding: 20px 20px;
         }
     </style>
 
