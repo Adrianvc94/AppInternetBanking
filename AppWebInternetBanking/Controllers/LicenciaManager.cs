@@ -59,6 +59,15 @@ namespace AppWebInternetBanking.Controllers
             return JsonConvert.DeserializeObject<IEnumerable<Licencia>>(response);
         }
 
+        public async Task<IEnumerable<Licencia>> ObtenerLicencias2()
+        {
+            HttpClient httpClient = new HttpClient();
+
+            var response = await httpClient.GetStringAsync(UrlBase);
+
+            return JsonConvert.DeserializeObject<IEnumerable<Licencia>>(response);
+        }
+
         public async Task<Licencia> Ingresar(Licencia licencia, string token)
         {
             HttpClient httpClient = GetClient(token);

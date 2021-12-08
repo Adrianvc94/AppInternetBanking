@@ -12,7 +12,7 @@ using API.Models;
 
 namespace API.Controllers
 {
-    [Authorize]
+    
     public class LicenciasController : ApiController
     {
         private INTERNET_BANKING_DW1_3C2021Entities db = new INTERNET_BANKING_DW1_3C2021Entities();

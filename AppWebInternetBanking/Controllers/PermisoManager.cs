@@ -59,6 +59,15 @@ namespace AppWebInternetBanking.Controllers
             return JsonConvert.DeserializeObject<IEnumerable<Permiso>>(response);
         }
 
+        public async Task<IEnumerable<Permiso>> ObtenerPermisos2()
+        {
+            HttpClient httpClient =  new HttpClient();
+
+            var response = await httpClient.GetStringAsync(UrlBase);
+
+            return JsonConvert.DeserializeObject<IEnumerable<Permiso>>(response);
+        }
+
         public async Task<Permiso> Ingresar(Permiso permiso, string token)
         {
             HttpClient httpClient = GetClient(token);

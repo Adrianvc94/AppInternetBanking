@@ -8,7 +8,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AppWebInternetBanking.Views
 {
@@ -21,14 +22,47 @@ namespace AppWebInternetBanking.Views
         UsuarioManager usuarioManager = new UsuarioManager();
         static string _codigo = string.Empty;
 
-        protected void Page_Load(object sender, EventArgs e)
+        public string labelsGrafico = string.Empty;
+        public string backgroundcolorsGrafico = string.Empty;
+        public string dataGrafico = string.Empty;
+
+        protected async void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (Session["CodigoUsuario"] == null)
                     Response.Redirect("~/Login.aspx");
                 else
+                {
+                    permisos = await permisoManager.ObtenerPermisos2();
                     InicializarControles();
+                    ObtenerDatosgrafico();
+                }
+
+            }
+
+        }
+
+        private void ObtenerDatosgrafico()
+        {
+            StringBuilder labels = new StringBuilder();
+            StringBuilder data = new StringBuilder();
+            StringBuilder backgroundColors = new StringBuilder();
+
+            var random = new Random();
+
+            foreach (var error in permisos.GroupBy(e => e.TipoPermiso).
+                Select(group => new
+                { TipoPermiso = group.Key, Cantidad = group.Count()}).OrderBy(x => x.TipoPermiso))
+            {
+                string color = String.Format("#{0:X6}", random.Next(0x1000000));
+                labels.Append(string.Format("'{0}',", error.TipoPermiso));
+                data.Append(string.Format("'{0}',", error.Cantidad));
+                backgroundColors.Append(string.Format("'{0}',", color));
+
+                labelsGrafico = labels.ToString().Substring(0, labels.Length - 1);
+                dataGrafico = data.ToString().Substring(0, data.Length - 1);
+                backgroundcolorsGrafico = backgroundColors.ToString().Substring(backgroundColors.Length - 1);
             }
 
         }
