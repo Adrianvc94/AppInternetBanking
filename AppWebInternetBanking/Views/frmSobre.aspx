@@ -1,7 +1,7 @@
 ﻿<%@ Page Async="true" Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmSobre.aspx.cs" Inherits="AppWebInternetBanking.Views.frmSobre" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
@@ -41,6 +41,8 @@
                 ]
             });
         });
+
+
     </script>
     <h1>Mantenimiento Sobres</h1>
     <asp:GridView ID="gvSobres" runat="server" AutoGenerateColumns="false"
@@ -62,6 +64,8 @@
     </asp:GridView>
     <asp:LinkButton type="Button" CssClass="btn btn-success" ID="btnNuevo" runat="server" OnClick="btnNuevo_Click"
         Text="<span aria-hidden='true' class='glyphicon glyphicon-floppy-disk'></span> Nuevo" />
+
+
     <br />
     <asp:Label ID="lblStatus" ForeColor="Maroon" runat="server" Visible="false" />
 
@@ -150,4 +154,34 @@
             </div>
         </div>
     </div>
+
+    <div class="row graficos-container">
+        <div class="col-sm">
+            <div id="canvas-holder" style="width: 100%">
+                <canvas id="vistas-chart" class="graficos"></canvas>
+            </div>
+            <script>
+                new Chart(document.getElementById("vistas-chart"), {
+                    type: 'pie',
+                    data: {
+                        labels: [<%= this.labelsGrafico %>],
+                        datasets: [{
+                            label: 'Sobres',
+                            backgroundColor: [<%= this.backgroundcolorsGrafico %>],
+                            data: [<%= this.dataGrafico %>]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Justificacion de los sobres mas altos'
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+
 </asp:Content>

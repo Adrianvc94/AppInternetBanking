@@ -265,29 +265,28 @@ namespace AppWebInternetBanking.Views
             return true;
         }
 
-        private void ObtenerDatosGrafico()
+        private async void ObtenerDatosGrafico()
         {
+            if (prestamos.Count() == 0)
+            {
+                prestamos = await prestamoManager.ObtenerPrestamos(Session["Token"].ToString());
+            }
             StringBuilder labels = new StringBuilder();
             StringBuilder data = new StringBuilder();
-            StringBuilder backgroundColor = new StringBuilder();
+            StringBuilder backgroundColors = new StringBuilder();
 
             var random = new Random();
 
-            foreach (var prestamo in prestamos.GroupBy(e => e.MontoPrestamo).
-                Select(group => new
-                {
-                    Monto = group.Key,
-                    Cantidad = group.Count()
-                }).OrderBy(x => x.Monto))
+            foreach (var prestamo in prestamos.OrderByDescending(x => x.MontoPrestamo))
             {
-                string color = string.Format("#{0:X6}", random.Next(0x1000000));
-                labels.Append(string.Format("'{0}',", prestamo.Monto));
-                data.Append(string.Format("'{0}',", prestamo.Cantidad));
-                backgroundColor.Append(string.Format("'{0}',", color));
+                string color = String.Format("#{0:X6}", random.Next(0x1000000));
+                labels.Append(string.Format("'{0} {1}',", "Monto:", prestamo.TasaInteres));
+                data.Append(string.Format("'{0}',", prestamo.MontoPrestamo));
+                backgroundColors.Append(string.Format("'{0}',", color));
 
                 labelsGrafico = labels.ToString().Substring(0, labels.Length - 1);
                 dataGrafico = data.ToString().Substring(0, data.Length - 1);
-                backgroundcolorsGrafico = backgroundColor.ToString().Substring(backgroundColor.Length - 1);
+                backgroundcolorsGrafico = backgroundColors.ToString().Remove(backgroundColors.Length - 1, 1);
             }
 
         }
