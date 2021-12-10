@@ -74,7 +74,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <!--     <button type="button" class="close" data-dismiss="modal">&times;</button> -->
                     <h4 class="modal-title">
                         <asp:Literal ID="ltrTituloMantenimiento" runat="server"></asp:Literal></h4>
                 </div>
@@ -139,7 +139,7 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" data-dismiss="modal">&times;</button>
+                 <!--   <button type="button" data-dismiss="modal">&times;</button> -->
                     <h4 class="modal-title">Mantenimiento de sobres</h4>
                 </div>
                 <div class="modal-body">
@@ -157,8 +157,8 @@
 
     <div class="row graficos-container">
         <div class="col-sm">
-            <div id="canvas-holder" style="width: 100%">
-                <canvas id="vistas-chart" class="graficos"></canvas>
+            <div id="canvas-holder" style="width: 90%; margin: 0 auto">
+                <canvas id="vistas-chart"  style="height: 45%" class="graficos"></canvas>
             </div>
             <script>
                 new Chart(document.getElementById("vistas-chart"), {

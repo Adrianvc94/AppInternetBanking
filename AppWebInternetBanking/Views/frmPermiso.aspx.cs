@@ -26,7 +26,7 @@ namespace AppWebInternetBanking.Views
         public string backgroundcolorsGrafico = string.Empty;
         public string dataGrafico = string.Empty;
 
-        protected async void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
@@ -34,7 +34,6 @@ namespace AppWebInternetBanking.Views
                     Response.Redirect("~/Login.aspx");
                 else
                 {
-                    permisos = await permisoManager.ObtenerPermisos2();
                     InicializarControles();
                     ObtenerDatosgrafico();
                 }
@@ -43,8 +42,12 @@ namespace AppWebInternetBanking.Views
 
         }
 
-        private void ObtenerDatosgrafico()
+        private async void ObtenerDatosgrafico()
         {
+            if (permisos.Count() == 0)
+            {
+                permisos = await permisoManager.ObtenerPermisos2();
+            }
             StringBuilder labels = new StringBuilder();
             StringBuilder data = new StringBuilder();
             StringBuilder backgroundColors = new StringBuilder();
@@ -131,6 +134,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     ScriptManager.RegisterStartupScript(this,
                     this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
@@ -168,6 +172,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     ScriptManager.RegisterStartupScript(this,
                     this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
@@ -191,6 +196,7 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarMant_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
+            ObtenerDatosgrafico();
         }
 
         protected async void btnAceptarModal_Click(object sender, EventArgs e)
@@ -204,6 +210,7 @@ namespace AppWebInternetBanking.Views
                     btnAceptarModal.Visible = false;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { openModal(); });", true);
                     InicializarControles();
+                    ObtenerDatosgrafico();
                 }
 
             }
@@ -228,6 +235,7 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarModal_Click1(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
+            ObtenerDatosgrafico();
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)

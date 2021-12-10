@@ -141,6 +141,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosGrafico();
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
                 }
@@ -176,6 +177,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosGrafico();
 
                     ScriptManager.RegisterStartupScript(this,
                     this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
@@ -197,6 +199,7 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarMant_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseModal(); });", true);
+            ObtenerDatosGrafico();
         }
 
         protected async void btnAceptarModal_Click(object sender, EventArgs e)
@@ -210,6 +213,7 @@ namespace AppWebInternetBanking.Views
                     btnAceptarModal.Visible = false;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { openModal(); });", true);
                     InicializarControles();
+                    ObtenerDatosGrafico();
                 }
             }
             catch (Exception ex)
@@ -233,6 +237,7 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarModal_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
+            ObtenerDatosGrafico();
         }
 
 
@@ -280,7 +285,7 @@ namespace AppWebInternetBanking.Views
             foreach (var prestamo in prestamos.OrderByDescending(x => x.MontoPrestamo))
             {
                 string color = String.Format("#{0:X6}", random.Next(0x1000000));
-                labels.Append(string.Format("'{0} {1}',", "Monto:", prestamo.TasaInteres));
+                labels.Append(string.Format("'{0} {1}',", "Tasa de interes:", prestamo.TasaInteres));
                 data.Append(string.Format("'{0}',", prestamo.MontoPrestamo));
                 backgroundColors.Append(string.Format("'{0}',", color));
 

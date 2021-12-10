@@ -27,7 +27,7 @@ namespace AppWebInternetBanking.Views
         public string backgroundcolorsGrafico = string.Empty;
         public string dataGrafico = string.Empty;
 
-        protected async void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
@@ -35,16 +35,19 @@ namespace AppWebInternetBanking.Views
                     Response.Redirect("~/Login.aspx");
                 else
                 {
-                    licencias = await licenciaManager.ObtenerLicencias2();
                     InicializarControles();
                     ObtenerDatosgrafico();
                 }
-                    
+
             }
         }
 
-        private void ObtenerDatosgrafico()
+        private async void ObtenerDatosgrafico()
         {
+            if (licencias.Count() == 0)
+            {
+                licencias = await licenciaManager.ObtenerLicencias2();
+            }
             StringBuilder labels = new StringBuilder();
             StringBuilder data = new StringBuilder();
             StringBuilder backgroundColors = new StringBuilder();
@@ -82,14 +85,14 @@ namespace AppWebInternetBanking.Views
                 DD_USU_CODIGO.DataSource = usuarios.ToList();
                 DD_USU_CODIGO.DataBind();
             }
-             catch (Exception)
+            catch (Exception)
             {
                 lblStatus.Text = "Hubo un error al cargar la lista de licencias";
                 lblStatus.Visible = true;
             }
         }
 
- 
+
 
         private bool ValidarCampos()
         {
@@ -123,7 +126,7 @@ namespace AppWebInternetBanking.Views
                     FechaVencimiento = Convert.ToDateTime(txtFechaV.Text)
                 };
 
-                Licencia licenciaIngresada = await licenciaManager.Ingresar(licencia, Session["Token"].ToString()); 
+                Licencia licenciaIngresada = await licenciaManager.Ingresar(licencia, Session["Token"].ToString());
 
                 if (!string.IsNullOrEmpty(licenciaIngresada.TipoLicencia))
                 {
@@ -132,6 +135,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     ScriptManager.RegisterStartupScript(this,
                     this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
@@ -158,13 +162,14 @@ namespace AppWebInternetBanking.Views
 
                 Licencia licenciaActualizado = await licenciaManager.Actualizar(licencia, Session["Token"].ToString()); //error
 
-                if(!string.IsNullOrEmpty(licenciaActualizado.TipoLicencia))
+                if (!string.IsNullOrEmpty(licenciaActualizado.TipoLicencia))
                 {
                     lblResultado.Text = "Licencia actualizada con exito";
                     lblResultado.Visible = true;
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     ScriptManager.RegisterStartupScript(this,
                     this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
@@ -187,43 +192,46 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarMant_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
+            ObtenerDatosgrafico();
         }
-        
+
         protected async void btnAceptarModal_Click1(object sender, EventArgs e)
         {
             try
-                        {
-                            Licencia licencia = await licenciaManager.Eliminar(_codigo, Session["Token"].ToString());
-                            if(!string.IsNullOrEmpty(licencia.TipoLicencia))
-                            {
-                                ltrModalMensaje.Text = "Licencia eliminado";
-                                btnAceptarModal.Visible = false;
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { openModal(); });", true);
-                                InicializarControles();
-                            }
+            {
+                Licencia licencia = await licenciaManager.Eliminar(_codigo, Session["Token"].ToString());
+                if (!string.IsNullOrEmpty(licencia.TipoLicencia))
+                {
+                    ltrModalMensaje.Text = "Licencia eliminado";
+                    btnAceptarModal.Visible = false;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { openModal(); });", true);
+                    InicializarControles();
+                    ObtenerDatosgrafico();
+                }
 
-                        }
-                        catch (Exception ex)
-                        {
-                            ErrorManager errorManager = new ErrorManager();
-                            Error error = new Error()
-                            {
-                                CodigoUsuario =
-                                Convert.ToInt32(Session["CodigoUsuario"].ToString()),
-                                FechaHora = DateTime.Now,
-                                Vista = "frmServicio.aspx",
-                                Accion = "btnAceptarModal_Click",
-                                Fuente = ex.Source,
-                                Numero = ex.HResult,
-                                Descripcion = ex.Message
-                            };
-                            Error errorIngresado = await errorManager.Ingresar(error);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager errorManager = new ErrorManager();
+                Error error = new Error()
+                {
+                    CodigoUsuario =
+                    Convert.ToInt32(Session["CodigoUsuario"].ToString()),
+                    FechaHora = DateTime.Now,
+                    Vista = "frmServicio.aspx",
+                    Accion = "btnAceptarModal_Click",
+                    Fuente = ex.Source,
+                    Numero = ex.HResult,
+                    Descripcion = ex.Message
+                };
+                Error errorIngresado = await errorManager.Ingresar(error);
             }
         }
-        
+
         protected void btnCancelarModal_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
+            ObtenerDatosgrafico();
         }
 
         protected void btnNuevo_Click1(object sender, EventArgs e)

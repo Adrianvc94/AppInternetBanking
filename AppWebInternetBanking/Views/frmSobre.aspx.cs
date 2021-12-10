@@ -78,6 +78,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
                 }
@@ -108,6 +109,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     ScriptManager.RegisterStartupScript(this,
                     this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
@@ -129,6 +131,7 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarModal_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
+            ObtenerDatosgrafico();
         }
 
         protected async void btnAceptarModal_Click(object sender, EventArgs e)
@@ -142,6 +145,7 @@ namespace AppWebInternetBanking.Views
                     btnAceptarModal.Visible = false;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { openModal(); });", true);
                     InicializarControles();
+                    ObtenerDatosgrafico();
                 }
             }
             catch (Exception ex)
@@ -165,6 +169,7 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarMant_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseModal(); });", true);
+            ObtenerDatosgrafico();
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
@@ -181,8 +186,10 @@ namespace AppWebInternetBanking.Views
             ltrDescripcionMant.Visible = true;
             txtDescripcionMant.Visible = true;
             ddlCodMoneda.Visible = true;
+
             txtCodSobreMant.Text = string.Empty;
             txtDescripcionMant.Text = string.Empty;
+            txtSaldoMant.Text = string.Empty;
             ScriptManager.RegisterStartupScript(this,
     this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
 

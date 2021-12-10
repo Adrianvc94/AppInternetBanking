@@ -86,7 +86,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <!--  <button type="button" class="close" data-dismiss="modal">&times;</button> -->
                     <h4 class="modal-title">
                         <asp:Literal ID="ltrTituloMantenimiento" runat="server"></asp:Literal></h4>
                 </div>
@@ -144,7 +144,7 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 <!--   <button type="button" class="close" data-dismiss="modal">&times;</button> -->
                     <h4 class="modal-title">Mantenimiento de Deposito a Plazos</h4>
                 </div>
                 <div class="modal-body">

@@ -2,10 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <script type="text/javascript" >
+   <!-- <script type="text/javascript"> -->
 
-        <script type="text/javascript src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
@@ -13,6 +12,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+
+
     <script type="text/javascript">
             $(document).ready(function () {
                 $('[id*=gvPermisos]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
@@ -55,17 +56,17 @@
 
 
     <h1>Mantenimiento de Permisos</h1>
-    <input id="myInput" placeholder="Buscar" class="form-control" type="text" />
+    <br />
     <asp:GridView ID="gvPermisos" runat="server" AutoGenerateColumns="false"
-       CssClass="table table-sm" HeaderStyle-CssClass="thead-dark"
+        CssClass="table table-sm" HeaderStyle-CssClass="thead-dark"
         HeaderStyle-BackColor="#1B1A1A" HeaderStyle-BorderStyle="None" BorderStyle="None" HeaderStyle-ForeColor="White"
         AlternatingRowStyle-BackColor="LightBlue" OnRowCommand="gvPermisos_RowCommand">
         <Columns>
             <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Codigo" DataField="CodPermiso" />
             <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="ID Usuario" DataField="CodUsuario" />
             <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Tipo Permiso" DataField="TipoPermiso" />
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Emision" DataField="FechaEmision"  DataFormatString="{0:M/dd/yyyy}"/>
-            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Vencimiento" DataField="FechaVencimiento" DataFormatString="{0:M/dd/yyyy}"/>
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Emision" DataField="FechaEmision" DataFormatString="{0:M/dd/yyyy}" />
+            <asp:BoundField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Vencimiento" DataField="FechaVencimiento" DataFormatString="{0:M/dd/yyyy}" />
 
             <asp:ButtonField HeaderStyle-CssClass="text-center" HeaderStyle-BorderStyle="None" ItemStyle-BackColor="#DEDAD4" ItemStyle-ForeColor="#1B1A1A" ItemStyle-BorderStyle="None" HeaderText="Modificar" CommandName="Modificar"
                 ControlStyle-CssClass="btn btn-primary" ButtonType="Button" Text="Modificar" />
@@ -82,7 +83,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <!--  <button type="button" class="close" data-dismiss="modal">&times;</button> -->
                     <h4 class="modal-title">
                         <asp:Literal ID="ltrTituloMantenimiento" runat="server"></asp:Literal></h4>
                 </div>
@@ -127,7 +128,7 @@
                             <td>
                                 <asp:Literal ID="ltrFechaV" Text="Fecha Vencimiento" runat="server" /></td>
                             <td>
-                                <asp:TextBox ID="txtFechaV" runat="server" Enabled="true" CssClass="form-control" TextMode="Date"/></td>
+                                <asp:TextBox ID="txtFechaV" runat="server" Enabled="true" CssClass="form-control" TextMode="Date" /></td>
                         </tr>
                     </table>
                     <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="false" runat="server" />
@@ -137,7 +138,7 @@
                     <asp:LinkButton type="button" OnClick="btnCancelarMant_Click" CssClass="btn btn-danger" ID="btnCancelarMant" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-remove'></span> Cerrar" />
                 </div>
             </div>
-        </div>
+            </div>
     </div>
 
     <div id="myModal" class="modal fade" role="dialog">
@@ -145,32 +146,33 @@
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <!--    <button type="button" class="close" data-dismiss="modal">&times;</button> -->
                         <h4 class="modal-title">Mantenimiento de licencias</h4>
                     </div>
                     <div class="modal-footer">
                         <p>
-                            <asp:Literal ID="ltrModalMensaje" runat="server" /></p>
+                            <asp:Literal ID="ltrModalMensaje" runat="server" />
+                        </p>
                     </div>
                     <div class="modal-footer">
                         <asp:LinkButton type="button" CssClass="btn btn-success" ID="btnAceptarModal" OnClick="btnAceptarModal_Click" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-ok'></span> Aceptar" />
                         <asp:LinkButton type="button" CssClass="btn btn-danger" ID="btnCancelarModal" OnClick="btnCancelarModal_Click1" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-remove'></span> Cerrar" />
                     </div>
                 </div>
-            </div>
         </div>
-        </div>
+    </div>
+    </div>
 
-    <div class="row">
-            <div class="col-sm">
-     <div id="canvas-holder" style="width:40%">
-		            <canvas id="vistas-chart"></canvas>
-	            </div>
-              <script >
-                  new Chart(document.getElementById("vistas-chart"), {
-                      type: 'pie',
-                      data: {
-                          labels: [<%= this.labelsGrafico %>],
+    <div class="row graficos-container">
+        <div class="col-sm">
+            <div id="canvas-holder" style="width: 90%; margin: 0 auto">
+                <canvas id="vistas-chart" style="height: 45%" class="graficos"></canvas>
+            </div>
+            <script>
+                new Chart(document.getElementById("vistas-chart"), {
+                    type: 'pie',
+                    data: {
+                        labels: [<%= this.labelsGrafico %>],
                           datasets: [{
                               label: "Total de lIncenias por tipo",
                               backgroundColor: [
@@ -190,15 +192,15 @@
                       options: {
                           title: {
                               display: true,
-                              text: 'Total de lIncenias por tipo'
+                              text: 'Total de lincenias por tipo'
                           }
                       }
                   });
-              </script>
-                </div>
-            </div>
-    
+            </script>
+        </div>
+    </div>
 
-    
+
+
 
 </asp:Content>
