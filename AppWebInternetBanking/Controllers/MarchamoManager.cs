@@ -75,9 +75,11 @@ namespace AppWebInternetBanking.Controllers
             HttpClient httpClient = GetClient(token);
 
             var response = await httpClient.PutAsync(UrlBase,
-                new StringContent(JsonConvert.SerializeObject(servicio), Encoding.UTF8, "application/json"));
+                new StringContent(JsonConvert.SerializeObject(servicio), 
+                Encoding.UTF8, "application/json"));
 
-            return JsonConvert.DeserializeObject<Marchamo>(await response.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<Marchamo>(await response.
+                Content.ReadAsStringAsync());
         }
 
 

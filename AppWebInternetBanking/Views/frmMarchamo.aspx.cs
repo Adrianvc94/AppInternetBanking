@@ -33,9 +33,8 @@ namespace AppWebInternetBanking.Views
                     Response.Redirect("~/Login.aspx");
                 else
                 {
-                    ObtenerDatosgrafico();
                     InicializarControles();
-                    
+                    ObtenerDatosgrafico();
                 }
 
             }
@@ -103,13 +102,6 @@ namespace AppWebInternetBanking.Views
                 lblResultado.Visible = true;
                 return false;
             }
-            //if (string.IsNullOrEmpty(txtMonto.Text) || (Convert.ToDecimal(txtMonto.Text) <= 0))
-            //{
-            //    lblResultado.Text = "Debe ingresar un monto valido";
-            //    lblResultado.ForeColor = Color.Maroon;
-            //    lblResultado.Visible = true;
-            //    return false;
-            //}
             if (string.IsNullOrEmpty(txtValorVehiculo.Text) || (Convert.ToDecimal(txtValorVehiculo.Text) <= 0))
             {
                 lblResultado.Text = "Debe ingresar un valor valido del vehiculo";
@@ -117,13 +109,6 @@ namespace AppWebInternetBanking.Views
                 lblResultado.Visible = true;
                 return false;
             }
-            //if (string.IsNullOrEmpty(txtTasa.Text) || (Convert.ToDecimal(txtTasa.Text) <= 0))
-            //{
-            //    lblResultado.Text = "Debe ingresar una tasa valida";
-            //    lblResultado.ForeColor = Color.Maroon;
-            //    lblResultado.Visible = true;
-            //    return false;
-            //}
             return true;
         }
 
@@ -230,7 +215,7 @@ namespace AppWebInternetBanking.Views
         {
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
-
+            ObtenerDatosgrafico();
         }
 
         protected async void btnAceptarModal_Click(object sender, EventArgs e)
@@ -269,6 +254,7 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarModal_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseModal(); });", true);
+            ObtenerDatosgrafico();
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
@@ -284,27 +270,19 @@ namespace AppWebInternetBanking.Views
             txtPlaca.Visible = true;
 
             ltrCodUsuario.Visible = true;
-            //ddUSU_CODIGO.Enabled = false;
-
-            //ltrMonto.Visible = true;
-            //txtMonto.Visible = true;
 
             ltrValorVehiculo.Visible = true;
             txtValorVehiculo.Visible = true;
 
 
-            //ltrTasa.Visible = true;
-            //txtTasa.Visible = true;
-
             txtCodigoMarchamo.Text = string.Empty;
             txtPlaca.Text = string.Empty;
-            //txtMonto.Text = string.Empty;
             txtValorVehiculo.Text = string.Empty;
-            //txtTasa.Text = string.Empty;
+
             lblResultado.Visible = false;
 
             ScriptManager.RegisterStartupScript(this,
-                this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
+    this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } );", true);
         }
 
 
@@ -323,10 +301,7 @@ namespace AppWebInternetBanking.Views
 
                     txtCodigoMarchamo.Text = row.Cells[0].Text.Trim();
                     txtPlaca.Text = row.Cells[1].Text.Trim();
-                    //txtCodUsuario.Text = row.Cells[2].Text.Trim();
-                    //txtMonto.Text = row.Cells[3].Text.Trim();
                     txtValorVehiculo.Text = row.Cells[3].Text.Trim();
-                    //txtTasa.Text = row.Cells[5].Text.Trim();
 
 
                     btnAceptarMant.Visible = true;

@@ -2,7 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
@@ -31,16 +30,6 @@
             $('#myModalMantenimiento').modal('hide'); //cierra ventana de mantenimiento
         }
 
-        $(document).ready(function () { //filtrar el datagridview
-            $("#myInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#MainContent_gvMarchamos tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-
-
 
         $(document).ready(function () {
             $('[id*=gvMarchamos]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
@@ -55,6 +44,7 @@
                 ]
             });
         });
+
 
     </script>
 
@@ -119,30 +109,13 @@
                             <td>
                                 <asp:DropDownList ID="ddUSU_CODIGO" CssClass="form-control" runat="server"></asp:DropDownList></td>
                         </tr>
-                        <!-- 
-              <tr>
-                 <td><asp:Literal ID="ltrMonto" Text="Monto" runat="server" /></td>
-                 <td><asp:TextBox ID="txtMonto" TextMode="Number" runat="server" CssClass="form-control" /></td>
-              </tr>
-              -->
+
                         <tr>
                             <td>
                                 <asp:Literal ID="ltrValorVehiculo" Text="Valor Fiscal vehiculo" runat="server" /></td>
                             <td>
                                 <asp:TextBox ID="txtValorVehiculo" TextMode="Number" runat="server" CssClass="form-control" /></td>
                         </tr>
-                        <!-- 
-              <tr>
-                 <td><asp:Literal ID="ltrTasa" Text="Tasa" runat="server" /></td>
-                 <td><asp:TextBox ID="txtTasa" TextMode="Number" runat="server" CssClass="form-control" /></td>
-              </tr>
-                    -->
-                        <!-- 
-              <tr>
-                 <td><asp:Literal ID="ltrTotalPagar" Text="Total a pagar" runat="server" /></td>
-                 <td><asp:TextBox ID="txtTotalPagar" TextMode="Number" runat="server" CssClass="form-control" /></td>
-              </tr>
-          -->
 
                     </table>
                     <asp:Label ID="lblResultado" ForeColor="Maroon" Visible="False" runat="server" />
@@ -177,8 +150,8 @@
         </div>
     </div>
 
-
-      <div class="row graficos-container">
+     <!-- Grafico -->
+    <div class="row graficos-container">
         <div class="col-sm">
             <div id="canvas-holder" style="width: 100%">
                 <canvas id="vistas-chart" class="graficos"></canvas>
@@ -202,11 +175,10 @@
                                 "#F28705",
                                 "#54B4B8"
                             ],
-                              data: [<%= this.dataGrafico %>]
+                            data: [<%= this.dataGrafico %>]
                         }]
                     },
                     options: {
-                        responsive: true,
                         title: {
                             display: true,
                             text: 'Marchamos más costosos'

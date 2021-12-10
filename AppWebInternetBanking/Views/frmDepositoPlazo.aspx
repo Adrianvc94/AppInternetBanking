@@ -2,7 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
@@ -157,6 +156,45 @@
                     <asp:LinkButton type="button" CssClass="btn btn-danger" ID="btnCancelarModal" OnClick="btnCancelarModal_Click" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-remove'></span> Cerrar" />
                 </div>
             </div>
+        </div>
+    </div>
+
+     <!-- Grafico -->
+    <div class="row graficos-container">
+        <div class="col-sm">
+            <div id="canvas-holder" style="width: 100%">
+                <canvas id="vistas-chart" class="graficos"></canvas>
+            </div>
+            <script>
+                new Chart(document.getElementById("vistas-chart"), {
+                    type: 'bar',
+                    data: {
+                        labels: [<%= this.labelsGrafico %>],
+                        datasets: [{
+                            label: 'Total a pagar',
+                            backgroundColor: [
+                                "#54B4B8",
+                                "#F14D4A",
+                                "#F28705",
+                                "#54B4B8",
+                                "#F14D4A",
+                                "#F28705",
+                                "#54B4B8",
+                                "#F14D4A",
+                                "#F28705",
+                                "#54B4B8"
+                            ],
+                            data: [<%= this.dataGrafico %>]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Depositos a plazo más altos'
+                        }
+                    }
+                });
+            </script>
         </div>
     </div>
 

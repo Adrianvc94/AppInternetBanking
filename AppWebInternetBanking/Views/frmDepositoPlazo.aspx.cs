@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -23,6 +24,10 @@ namespace AppWebInternetBanking.Views
         MonedaManager monedaManager = new MonedaManager();
         static string _codigo = string.Empty;
 
+        public string labelsGrafico = string.Empty;
+        public string backgroundcolorsGrafico = string.Empty;
+        public string dataGrafico = string.Empty;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,8 +36,38 @@ namespace AppWebInternetBanking.Views
                 if (Session["CodigoUsuario"] == null)
                     Response.Redirect("~/Login.aspx");
                 else
+                {
                     InicializarControles();
+                    ObtenerDatosgrafico();
+                }
+                    
             }
+        }
+
+        private async void ObtenerDatosgrafico()
+        {
+            if (depositoPlazos.Count() == 0)
+            {
+                depositoPlazos = await depositoManager.ObtenerDepositoPlazos(Session["Token"].ToString());
+            }
+            StringBuilder labels = new StringBuilder();
+            StringBuilder data = new StringBuilder();
+            StringBuilder backgroundColors = new StringBuilder();
+
+            var random = new Random();
+
+            foreach (var deposito in depositoPlazos.OrderByDescending(x => x.TotalPagar).Take(5))
+            {
+                string color = String.Format("#{0:X6}", random.Next(0x1000000));
+                labels.Append(string.Format("'{0} {1}',", "Codigo Usuario:", deposito.CodUsuario));
+                data.Append(string.Format("'{0}',", deposito.TotalPagar));
+                backgroundColors.Append(string.Format("'{0}',", color));
+
+                labelsGrafico = labels.ToString().Substring(0, labels.Length - 1);
+                dataGrafico = data.ToString().Substring(0, data.Length - 1);
+                backgroundcolorsGrafico = backgroundColors.ToString().Remove(backgroundColors.Length - 1, 1);
+            }
+
         }
 
 
@@ -111,6 +146,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     Correo correo = new Correo();
                     correo.Enviar("Nuevo deposito a plazo incluido", Convert.ToString(depositoIngresado.CantidadPlazos), "svillagra07@gmail.com",
@@ -149,6 +185,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     Correo correo = new Correo();
                     correo.Enviar("Deposito a Plazo actualizado con exito", Convert.ToString(depositoActualizado.CantidadPlazos), "svillagra07@gmail.com",
@@ -176,6 +213,7 @@ namespace AppWebInternetBanking.Views
         {
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
+            ObtenerDatosgrafico();
 
         }
 
@@ -191,6 +229,7 @@ namespace AppWebInternetBanking.Views
                     btnAceptarModal.Visible = false;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { openModal(); });", true);
                     InicializarControles();
+                    ObtenerDatosgrafico();
                 }
             }
             catch (Exception ex)
@@ -215,6 +254,7 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarModal_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseModal(); });", true);
+            ObtenerDatosgrafico();
         }
 
 
