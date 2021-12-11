@@ -189,7 +189,7 @@
                     options: {
                         title: {
                             display: true,
-                            text: 'Total de lincenias por tipo'
+                            text: 'Distribución de tarjetas por su emisor'
                         }
                     }
                 });

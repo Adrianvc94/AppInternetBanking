@@ -178,7 +178,7 @@
                         responsive: true,
                         title: {
                             display: true,
-                            text: 'Los créditos con mayores montos'
+                            text: 'Créditos con mayores montos'
                         }
                     }
                 });
