@@ -1,6 +1,6 @@
 ﻿<%@ Page Async="true" Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmTarjeta.aspx.cs" Inherits="AppWebInternetBanking.Views.frmTarjeta" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
@@ -162,6 +162,38 @@
                     <asp:LinkButton type="button" CssClass="btn btn-danger" ID="btnCancelarModal" runat="server" Text="<span aria-hidden='true' class='glyphicon glyphicon-remove'></span> Cerrar" OnClick="btnCancelarModal_Click" />
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- GRÁFICO -->
+    <div class="row graficos-container">
+        <div class="col-sm">
+            <div id="canvas-holder" style="width: 100%">
+                <canvas id="vistas-chart" class="graficos"></canvas>
+            </div>
+            <script>
+                new Chart(document.getElementById("vistas-chart"), {
+                    type: 'pie',
+                    data: {
+                        labels: [<%= this.labelsGrafico %>],
+                        datasets: [{
+                            label: "Distribución de tarjetas por su emisor",
+                            backgroundColor: [
+                                "#1e81b0",
+                                "#e28743",
+                                "#eab676"
+                            ],
+                            data: [<%= this.dataGrafico %>]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Total de lincenias por tipo'
+                        }
+                    }
+                });
+            </script>
         </div>
     </div>
 </asp:Content>

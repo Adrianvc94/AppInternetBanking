@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -18,6 +19,11 @@ namespace AppWebInternetBanking.Views
         IEnumerable<Usuario> usuarios = new ObservableCollection<Usuario>();
         UsuarioManager usuarioManager = new UsuarioManager();
         static string _codigo = string.Empty;
+
+        public string labelsGrafico = string.Empty;
+        public string backgroundcolorsGrafico = string.Empty;
+        public string dataGrafico = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -26,8 +32,38 @@ namespace AppWebInternetBanking.Views
                     Response.Redirect("~/Login.aspx");
                 else
                     InicializarControles();
+                    ObtenerDatosgrafico();
             }
         }
+
+        private async void ObtenerDatosgrafico()
+        {
+            if (tarjeta.Count() == 0)
+            {
+                tarjeta = await tarjetaManager.ObtenerTarjeta(Session["Token"].ToString());
+            }
+
+            StringBuilder labels = new StringBuilder();
+            StringBuilder data = new StringBuilder();
+            StringBuilder backgroundColors = new StringBuilder();
+
+            var random = new Random();
+
+            foreach (var t in tarjeta.GroupBy(e => e.Emisor).
+                Select(group => new
+                { Emisor = group.Key, Cantidad = group.Count() }).OrderBy(x => x.Emisor))
+            {
+                string color = String.Format("#{0:X6}", random.Next(0x1000000));
+                labels.Append(string.Format("'{0}',", t.Emisor));
+                data.Append(string.Format("'{0}',", t.Cantidad));
+                backgroundColors.Append(string.Format("'{0}',", color));
+
+                labelsGrafico = labels.ToString().Substring(0, labels.Length - 1);
+                dataGrafico = data.ToString().Substring(0, data.Length - 1);
+                backgroundcolorsGrafico = backgroundColors.ToString().Substring(backgroundColors.Length - 1);
+            }
+        }
+
         private async void InicializarControles()
         {
             try
