@@ -170,6 +170,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     Correo correo = new Correo();
                     correo.Enviar("Nuevo crédito incluido", creditoIngresado.Descripcion, "svillagra07@gmail.com",
@@ -214,6 +215,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     Correo correo = new Correo();
                     correo.Enviar("Crédito actualizado con exito", creditoActualizado.Descripcion, "svillagra07@gmail.com",
@@ -248,6 +250,7 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarMant_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
+            ObtenerDatosgrafico();
         }
 
         protected async void btnAceptarModal_Click(object sender, EventArgs e)
@@ -262,6 +265,7 @@ namespace AppWebInternetBanking.Views
                     btnAceptarModal.Visible = false;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { openModal(); });", true);
                     InicializarControles();
+                    ObtenerDatosgrafico();
                 }
             }
             catch (Exception ex)
@@ -287,6 +291,7 @@ this.GetType(), "LaunchServerSide", "$(function() {openModalMantenimiento(); } )
         protected void btnCancelarModal_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseModal(); });", true);
+            ObtenerDatosgrafico();
         }
 
         private bool validar()

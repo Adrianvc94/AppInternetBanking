@@ -168,8 +168,8 @@
     <!-- GRÁFICO -->
     <div class="row graficos-container">
         <div class="col-sm">
-            <div id="canvas-holder" style="width: 100%">
-                <canvas id="vistas-chart" class="graficos"></canvas>
+            <div id="canvas-holder" style="width: 90%; margin: 0 auto">
+                <canvas id="vistas-chart" style="height: 45%" class="graficos"></canvas>
             </div>
             <script>
                 new Chart(document.getElementById("vistas-chart"), {

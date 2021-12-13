@@ -172,6 +172,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     Correo correo = new Correo();
                     correo.Enviar("Nueva tarjeta incluida", tarjetaIngresada.Emisor, "svillagra07@gmail.com",
@@ -216,6 +217,7 @@ namespace AppWebInternetBanking.Views
                     lblResultado.ForeColor = Color.Green;
                     btnAceptarMant.Visible = false;
                     InicializarControles();
+                    ObtenerDatosgrafico();
 
                     Correo correo = new Correo();
                     correo.Enviar("Tarjeta actualizada con exito", tarjetaActualizada.Emisor, "svillagra07@gmail.com",
@@ -248,6 +250,7 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarMant_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseMantenimiento(); });", true);
+            ObtenerDatosgrafico();
         }
 
         protected async void btnAceptarModal_Click(object sender, EventArgs e)
@@ -261,6 +264,7 @@ namespace AppWebInternetBanking.Views
                     btnAceptarModal.Visible = false;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { openModal(); });", true);
                     InicializarControles();
+                    ObtenerDatosgrafico();
                 }
             }
             catch (Exception ex)
@@ -284,6 +288,7 @@ namespace AppWebInternetBanking.Views
         protected void btnCancelarModal_Click(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "LaunchServerSide", "$(function() { CloseModal(); });", true);
+            ObtenerDatosgrafico();
         }
 
         private bool valFecha()

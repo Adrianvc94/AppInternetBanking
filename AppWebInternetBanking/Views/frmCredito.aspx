@@ -147,7 +147,7 @@
         </div>
     </div>
     <!-- GRÁFICO -->
-    <div class="row">
+    <div class="row graficos-container">
         <div class="col-sm">
             <div id="canvas-holder" style="width: 100%">
                 <canvas id="vistas-chart" class="graficos"></canvas>
