@@ -45,6 +45,7 @@
 
         .navbar {
             background-color: #ebe8e5;
+            border:none;
         }
 
         .navbar-inverse .navbar-nav > li > a {
@@ -76,7 +77,7 @@
 
         footer {
             position: absolute;
-            /*            bottom: 12px;*/
+            bottom: 5px;
             width: 50%;
             color: white;
         }
@@ -105,9 +106,10 @@
         /*////////////////////////////////////////////////*/
         /*////////////////////////////////////////////////*/
         /*////////////////////////////////////////////////*/
-        .graficos-container{
+        .graficos-container {
             margin-top: 50px;
         }
+
         .graficos {
             background-color: #DEDAD4;
             border-radius: 10px;
@@ -116,7 +118,7 @@
     </style>
 
 </head>
-<body style="padding: 5px; background-color: #292929; font-family: 'Roboto', sans-serif;">
+<body style="padding: 0px; background-color: #292929; font-family: 'Roboto', sans-serif;">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -207,10 +209,6 @@
             </asp:ContentPlaceHolder>
 
 
-            <footer>
-                <hr />
-                <p>Copyright &copy; <%: DateTime.Now.Year %> Dream Team ®</p>
-            </footer>
         </div>
 
     </form>
